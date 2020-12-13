@@ -676,10 +676,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								<h4>account</h4>
 								<ul>
-									<li><a href="account.html">login</a></li>
-									<li><a href="account.html">create an account</a></li>
+									<li><a href="account.html">登录</a></li>
+									<li><a href="account.html">创建新账户</a></li>
 									<li><a href="product.html">create wishlist</a></li>
-									<li><a href="product.html">my shopping bag</a></li>
+									<li><a href="product.html">我的购物车</a></li>
 									<li><a href="product.html">brands</a></li>
 									<li><a href="product.html">create wishlist</a></li>
 								</ul>	
@@ -756,7 +756,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input v-model="address" type="text">
 					</div>
 					<div class="address new">
-						<input @click="regist" type="submit" value="提交">
+						<input @click="regist" type="button" value="提交">
 					</div>
 					</form>
 				</div> 
@@ -784,6 +784,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       			
       			axios.post(url,params).then(res=>{
       				alert(res.data);
+      				
       			});
       		}
 		  },
@@ -791,24 +792,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  
 	  </script>
 				<div class="col-md-6 account-left second">
-					<form>
+					<form id="t">
 						<div class="account-top heading">
 							<h3>老用户登录</h3>
 						</div>
 						<div class="address">
 							<span>电子邮箱或用户名</span>
-							<input type="text">
+							<input v-model="uname" type="text">
 						</div>
 						<div class="address">
 							<span>密码</span>
-							<input type="password">
+							<input v-model="upwd" type="password">
 						</div>
 						<div class="address">
 							<a class="forgot" href="#">忘记密码?</a>
-							<input type="submit" value="登录">
+							<input @click="login()" type="button" value="登录">
 						</div>
 					 </form>
 					  </div>
+					  
+					 <script type="text/javascript">
+					 var v=new Vue({
+						 el:"#t",
+						 data : {
+							 uname:"",
+							 upwd:""
+						 },
+							 methods:{
+								login(){
+									
+									var url="loginUser.s";
+									var p=new URLSearchParams();
+									p.append("uname",this.uname);
+									p.append("upwd",this.upwd);
+										axios.post(url,p).then(res=>{
+						      				alert(res.data);
+						      				if(res.data=="登陆成功"){
+												location.href="index.html";
+											}
+						      			});
+										
+									}
+							},
+						});
+						
+					 
+					 </script> 
+					  
 				 </div>
 				<div class="clearfix"></div>
 			</div>
