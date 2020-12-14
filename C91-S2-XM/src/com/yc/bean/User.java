@@ -17,6 +17,7 @@ public class User implements java.io.Serializable{
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", phone=" + phone + ", email=" + email + ", upwd=" + upwd
 				+ ", address=" + address + "]";
+		//
 	}
 	public User() {
 		super();
