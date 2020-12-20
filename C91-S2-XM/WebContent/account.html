@@ -7,6 +7,9 @@
 <meta name="keywords" content="Nuevo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
 <link href="css/style.css" rel='stylesheet' type='text/css' />	
@@ -307,12 +310,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								<h4>account</h4>
 								<ul>
-									<li><a href="account.html">login</a></li>
-									<li><a href="account.html">create an account</a></li>
-									<li><a href="product.html">create wishlist</a></li>
-									<li><a href="product.html">my shopping bag</a></li>
-									<li><a href="product.html">brands</a></li>
-									<li><a href="product.html">create wishlist</a></li>
+									<li><a href="account.html">登录</a></li>
+									<li><a href="account.html">注册</a></li>
+									<li><a href="product.html">创建 愿望</a></li>
+									<li><a href="product.html">我的购物出</a></li>
+									<li><a href="product.html">品牌</a></li>
+									<li><a href="product.html">创建愿望列表</a></li>
 								</ul>	
 							</div>						
 						</div>
@@ -727,52 +730,82 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <div class="account">
 	  <div class="container">
 	       <div class="account-bottom">
-				<div class="col-md-6 account-left">
+				<div id="zhu" class="col-md-6 account-left">
 					<form>
 					<div class="account-top heading">
-						<h3>NEW CUSTOMERS</h3>
+						<h3>注册新用户</h3>
 					</div>
-					<div class="address">
-						<span>First Name</span>
+					<div v-model="uname" class="address">
+						<span>用户名</span>
 						<input type="text">
 					</div>
-					<div class="address">
-						<span>Last Name</span>
-						<input type="text">
-					</div>
-					<div class="address">
-						<span>Email Address</span>
-						<input type="text">
-					</div>
-					<div class="address">
-						<span>Password</span>
+					<div v-model="upwd"class="address">
+						<span>密码</span>
 						<input type="password">
 					</div>
-					<div class="address">
-						<span>Re-enter Password</span>
-						<input type="password">
+					<div v-model="phone" class="address">
+						<span>您的电话</span>
+						<input type="text">
+					</div>
+					<div v-model="email" class="address">
+						<span>电子邮箱</span>
+						<input type="text">
+					</div>
+					<div v-model="address" class="address">
+						<span>收货地址</span>
+						<input type="text">
 					</div>
 					<div class="address new">
-						<input type="submit" value="submit">
+						<input @click="regist"type="submit" value="提交">
 					</div>
 					</form>
 				</div> 
+<script type="text/javascript">
+	  var v=new Vue({
+		  el:"#zhu",
+		  data:{
+			  uname:"",
+      		  phone:"",
+      		  email:"",
+      		  upwd:"",
+      		  address:""
+		  },
+		  methods:{
+      		regist(){
+      			//使用post 请求
+      			var url="register.s";
+      			var params=new URLSearchParams();
+      			
+      			params.append("uname",this.uname);
+      			params.append("phone",this.phone);
+      			params.append("email",this.email);
+      			params.append("upwd",this.upwd);
+      			params.append("address",this.address);
+      			
+      			axios.post(url,params).then(res=>{
+      				alert(res.data);
+      			});
+      		}
+		  },
+	  })
+	  
+	  </script>
 				<div class="col-md-6 account-left second">
 					<form>
 						<div class="account-top heading">
-							<h3>REGISTERED CUSTOMERS</h3>
+							<h3>老用户登录</h3>
 						</div>
 						<div class="address">
-							<span>Email Address</span>
+							<span>电子邮箱或用户名</span>
 							<input type="text">
 						</div>
 						<div class="address">
-							<span>Password</span>
+							<span>密码</span>
 							<input type="password">
 						</div>
 						<div class="address">
-							<a class="forgot" href="#">Forgot Your Password?</a>
-							<input type="submit" value="Login">
+							<a class="forgot" href="#">忘记密码?</a>
+							<input type="submit" value="登录">
 						</div>
 					 </form>
 					  </div>
@@ -780,6 +813,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>
 			</div>
 	  </div>
+	 
 <!-- checkout -->
 	 <!--start-bottom-->
 		     <!--start-image-cursuals-->
