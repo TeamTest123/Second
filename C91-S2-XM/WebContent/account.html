@@ -730,39 +730,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <div class="account">
 	  <div class="container">
 	       <div class="account-bottom">
-				<div id="zhu" class="col-md-6 account-left">
+				<div id="user" class="col-md-6 account-left">
 					<form>
 					<div class="account-top heading">
 						<h3>注册新用户</h3>
 					</div>
-					<div v-model="uname" class="address">
+					<div  class="address">
 						<span>用户名</span>
-						<input type="text">
+						<input v-model="uname" type="text">
 					</div>
-					<div v-model="upwd"class="address">
+					<div  class="address">
 						<span>密码</span>
-						<input type="password">
+						<input v-model="upwd" type="password">
 					</div>
-					<div v-model="phone" class="address">
+					<div  class="address">
 						<span>您的电话</span>
-						<input type="text">
+						<input v-model="phone" type="text">
 					</div>
-					<div v-model="email" class="address">
+					<div  class="address">
 						<span>电子邮箱</span>
-						<input type="text">
+						<input v-model="email" type="text">
 					</div>
-					<div v-model="address" class="address">
+					<div  class="address">
 						<span>收货地址</span>
-						<input type="text">
+						<input v-model="address" type="text">
 					</div>
 					<div class="address new">
-						<input @click="regist"type="submit" value="提交">
+						<input @click="regist" type="submit" value="提交">
 					</div>
 					</form>
 				</div> 
 <script type="text/javascript">
 	  var v=new Vue({
-		  el:"#zhu",
+		  el:"#user",
 		  data:{
 			  uname:"",
       		  phone:"",
