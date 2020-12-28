@@ -1,7 +1,5 @@
 package com.yc.bean;
 
-import java.security.Timestamp;
-
 public class User implements java.io.Serializable{
 
 	/**
@@ -19,6 +17,7 @@ public class User implements java.io.Serializable{
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", phone=" + phone + ", email=" + email + ", upwd=" + upwd
 				+ ", address=" + address + "]";
+		//
 	}
 	public User() {
 		super();
@@ -68,6 +67,10 @@ public class User implements java.io.Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+
+}
 	
 }
