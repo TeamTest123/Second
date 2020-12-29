@@ -1,6 +1,6 @@
 package com.yc.bean;
 
-public class Sort implements java.io.Serializable{
+public class Category implements java.io.Serializable{
 
 	/**
 	 * 
