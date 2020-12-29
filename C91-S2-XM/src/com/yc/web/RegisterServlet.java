@@ -27,10 +27,11 @@ public class RegisterServlet extends HttpServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		User user =new User();
 		user.setUname(req.getParameter("uname"));
+		user.setUpwd(req.getParameter("upwd"));
 		user.setPhone(req.getParameter("phone"));
 		user.setEmail(req.getParameter("email"));
 		user.setAddress(req.getParameter("address"));
-		user.setUpwd(req.getParameter("upwd"));
+
 				
 		try {
 			ubiz.register(user);

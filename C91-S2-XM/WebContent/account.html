@@ -739,13 +739,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span>用户名</span>
 						<input v-model="uname" type="text">
 					</div>
-					<div  class="address">
-						<span>密码</span>
-						<input v-model="upwd" type="password">
-					</div>
+					
 					<div  class="address">
 						<span>您的电话</span>
 						<input v-model="phone" type="text">
+					</div>
+					<div  class="address">
+						<span>密码</span>
+						<input v-model="upwd" type="password">
 					</div>
 					<div  class="address">
 						<span>电子邮箱</span>
@@ -765,9 +766,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  el:"#user",
 		  data:{
 			  uname:"",
+			  upwd:"",
       		  phone:"",
       		  email:"",
-      		  upwd:"",
+      		  
       		  address:""
 		  },
 		  methods:{
@@ -777,9 +779,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       			var params=new URLSearchParams();
       			
       			params.append("uname",this.uname);
+      			params.append("upwd",this.upwd);
       			params.append("phone",this.phone);
       			params.append("email",this.email);
-      			params.append("upwd",this.upwd);
       			params.append("address",this.address);
       			
       			axios.post(url,params).then(res=>{
