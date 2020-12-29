@@ -35,6 +35,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 </head>
 <body>
+
+
 <!--start-home-->
 <!-- header_top -->
 <div class="top_bg" id="home">
@@ -69,8 +71,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 					<i class="glyphicon glyphicon-shopping-cart"></i>
 				</a>
-				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+				
 				<div class="clearfix"> </div>
+				<div class="fr">
+					<div class="login_info fl">
+                	欢迎：<em>y c</em>
+                </div>
+                     <div class="user_link fl">
+                 	
+                    <a href="contact.html">用户中心</a>
+                    <span> | </span>
+                    <a href="checkout.html">我的购物车</a>
+                    <span> | </span>
+                    <a href="order.html">我的订单</a>
+                </div>
+				
+				
+				</div>
 			</div>				 
 		</div>
 		<div class="clearfix"></div>	
@@ -734,28 +751,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						});	  
 					});
 			   </script>
-			 <div class="cart-header">
+			 <div class="cart-con">
+			   <h2 class="total_count">全部商品<em>1</em>件</h2>
+    	<div class="cart_list_th clearfix">
+        	<ul>
+            	<li class="col01">商品名称</li>
+            	<li class="col02">商品单位</li>
+                <li class="col03">商品价格(元)</li>
+                <li class="col04">数量</li>
+                <li class="col05">小计</li>
+                <li class="col06">操作</li>
+            </ul>
+        </div>
+        	<div class="cart_list_td clearfix">
+       		<ul>
+        		<li class="col01"><input type="checkbox" checked></li>
+            	<li class="col02"><img src="images/goods/goods003.jpg"></li>
+                <li class="col03">牛奶草莓<br><em>16.80元/500g</em></li>
+                <li class="col04">500g</li>
+                <li class="col05">16.80</li>
+                <li class="col06">
+                	<div class="num_add">
+                    	<a href="javascript:void(0)" onclick="lost(this)" class="minus fl">-</a>
+                        <input type="text" value="1" class="num_show fl">
+                        <a href="javascript:void(0)" onclick="add(this)" class="add fl">+</a>
+                    </div>
+                </li>
+                <li class="col07">16.80</li>
+                <li class="col08"><a href="javascript:;" onclick="delGoods(this)">删除</a></li>
+            </ul>
 				 <div class="close1"> </div>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
 							 <img src="images/f4.jpg" class="img-responsive" alt="">
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-						<ul class="qty">
-							<li><p>Min. order value:</p></li>
-							<li><p>FREE delivery</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : $10.00</p>
-							 <span>Delivered in 1-1:30 hours</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
+							 
+
 			 </div>
+			 </div>
+			 </div>
+			 </div>
+			 <div class="setElements">
+        	<ul>
+            	<li class="col01"><input type="checkbox" checked id="all"></li>
+            	<li class="col02"><label for="all">全选</label></li>
+                <li class="col03">合计(不含运费)：<span>￥</span><em id="totalPrices"></em><br>共计<b id="totalNumbers"></b>件商品</li>
+                <li class="col04"><a href="">去结算</a></li>
+            </ul>
+        </div>
+        
+			 
 			 <script>$(document).ready(function(c) {
 					$('.close2').on('click', function(c){
 							$('.cart-header2').fadeOut('slow', function(c){
