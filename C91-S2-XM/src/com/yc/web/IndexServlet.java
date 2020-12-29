@@ -11,24 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.yc.bean.Category;
-import com.yc.dao.FenDao;
+import com.yc.bean.Product;
+import com.yc.dao.ProductDao;
 
 
-/**
- * Servlet implementation class FenServlet
- */
-@WebServlet("/fen.s")
-public class FenServlet extends HttpServlet {
+
+@WebServlet("/index.s")
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private FenDao fdao=new FenDao();
-   
+   ProductDao dao=new ProductDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		List<Category> list=null;
+		List<Product> list=null;
 		try {
-			list=fdao.selectAllCategory();
+			list=dao.selectIndexYs();
+			
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -36,10 +33,11 @@ public class FenServlet extends HttpServlet {
 		//list=>json  使用gson
 		Gson gson =new Gson();
 		String json=gson.toJson(list);
+		//解决乱码问题
+		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().append(json);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
