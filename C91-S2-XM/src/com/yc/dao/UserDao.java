@@ -16,9 +16,9 @@ public class UserDao {
 		String sql="insert into user values(null,?,?,?,?,?)";
 		DBHelper.updata(sql, 
 				user.getUname(),
+				user.getUpwd(),
 				user.getPhone(),
 				user.getEmail(),
-				user.getUpwd(),
 				user.getAddress());
 	}
 	

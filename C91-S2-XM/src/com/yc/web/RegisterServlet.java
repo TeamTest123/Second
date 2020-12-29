@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
 		user.setPhone(req.getParameter("phone"));
 		user.setEmail(req.getParameter("email"));
 		user.setAddress(req.getParameter("address"));
-
+		
 				
 		try {
 			ubiz.register(user);
