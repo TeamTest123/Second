@@ -2,10 +2,7 @@
 <html>
 <head>
 <title>首页</title>
-<style type="text/css">
 
-
-</style>
 <script src="js/vue.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -183,6 +180,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 </div>
+
 <script type="text/javascript">
   		 var v=new Vue({
   			el:"#app1",
@@ -212,13 +210,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div  class="standard active" data-selector="1">
 							<div v-for="(item,i) in list" class="tag-grid">
 								<div class="tag-wrapper">		
-									<a href="single.html"><img :src="item.image" class="img-responsive" alt="" /></a>
+									<a :href="'single.html#'+item.pid"><img :src="item.image" class="img-responsive" alt="" /></a>
 									<div class="r-title">
 										<h3>{{item.pname}}</h3>
 										<h4>{{item.price}}</h4>
 									</div>
 								</div>
-								<div class="atc"><a href="single.html">shop</a></div>
+								<div class="atc"><a :href="'single.html#'+item.pid">shop</a></div>
 					       </div>
 						</div>		
 					</div>
