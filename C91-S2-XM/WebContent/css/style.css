@@ -1772,6 +1772,7 @@ display:none;
 /*--start-footer--*/
 .footer{
        padding: 4em 0px 1em 0;
+       
 }
 .footer-left h3{
     font-size: 1.2em;
@@ -1818,6 +1819,7 @@ ul.socials {
     text-align: center;
     background-color: #333;
     padding-top: 5px;
+    
 }
 /*--end-footer--*/
 /*--copy-right--*/
