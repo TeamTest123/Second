@@ -9,7 +9,7 @@ public class CartDao {
 
 	public void insert(Cart cart) throws SQLException {
 		String sql="insert into cart values(null,?,?,?)";
-		DBHelper.updata(sql, 
+		DBHelper.update(sql, 
 				cart.getPid(),
 				cart.getUid(),
 				cart.getNumber());
