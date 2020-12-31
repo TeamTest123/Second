@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户信息管理</title>
+
+
+<link rel="stylesheet" type="text/css"
+	href="../easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+
+<script type="text/javascript">
+function fmtcz(value,row,index){
+	//函数的值会被解析成html元素
+	return "<button onclick='del("+index+")'>删除</button>";
+}
+function del(index){
+	$.messager.confirm('系统提示','您想要删除该用户信息吗？',function(r){
+		if(r){
+			//根据Index删除记录
+			//根据index获取当前行的uid
+			var rows=$("#table").datagrid('getRows');
+			var uid=rows[index].uid;
+			//发起Ajax删除数据的记录
+			//调用ajax请求方法删除歌手信息
+			//JQuery的post方法3个参数url，params,回调函数
+			var url="../DeleteUser.s";
+			var params={uid:uid};
+			
+			function callback(data){ //data:Servlet返回的数据
+				//刷新表格数据
+				$("#table").datagrid('reload');
+				$.messager.show({
+					title:'系统提示',
+					msg:data,
+					timeout:5000,//5秒
+					showType:'slide'
+				});
+			
+		}
+			$.post(url,params,callback);
+		}
+	});
+}
+
+function save(){
+	$('#ff').form('submit',{
+		url:"../CreateUser.s",
+		success:function(data){
+			$("#table").datagrid('reload');
+			$.messager.show({
+				title:'系统提示',
+				msg:data,
+				timeout:5000,//5秒
+				showType:'slide'
+			});
+		}
+		
+	});
+}
+
+
+
+	
+</script>
+</head>
+<body>
+		<div id="cc" class="easyui-layout" data-options="fit:true">
+		<div data-options="region:'north',title:'查询条件',split:true"
+			style="height: 100px;">
+			<a id="btn" href="#" class="easyui-linkbutton"
+				data-options="iconCls:'icon-search'">查询</a>
+
+		</div>
+		<div data-options="region:'center',title:'查询结果'"
+			style="padding: 5px; background: #eee;">
+			<table id="table" class="easyui-datagrid"
+				data-options="
+  	    	fit:true,
+  	    	url:'../QueryPageUser.s',
+  	    	fitColumns:true,
+  	    	singSelect:true,
+  	    	pagination:true ">
+				<thead>
+					<tr>
+						<th data-options="field:'uid',width:100">编码</th>
+						<th data-options="field:'uname',width:100">用户名</th>
+						<th data-options="field:'phone',width:100">电话</th>
+						<th data-options="field:'email',width:100">邮箱</th>
+						<th data-options="field:'address',width:100">地址</th>
+						<th data-options="field:'不存在的字段',width:20,formatter:fmtcz">操作</th>
+					</tr>
+
+				</thead>
+			</table>
+		</div>
+	</div>
+	
+		<form  style="text-align: center;" id="ff">
+		<input id="tb" name="uid" class="easyui-textbox" prompt="编码"><br>
+		<input id="tb" name="uname" class="easyui-textbox" prompt="用户名"><br>
+		<input id="tb"  name="phone" class="easyui-textbox" prompt="电话"><br>
+		<input id="tb"  name="address" class="easyui-textbox" prompt="专辑成员"><br>
+			 <a id="btn" href="#"
+				class="easyui-linkbutton" data-options="iconCls:'icon-save',
+				onClick:save">保存</a>
+				
+			<a id="btn" href="#"
+				class="easyui-linkbutton" data-options="iconCls:'icon-concel'">取消</a>
+	
+	</form>
+</body>
+</html>

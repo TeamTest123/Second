@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import com.yc.bean.User;
 
 
 public class DBHelper {
@@ -68,9 +69,46 @@ public class DBHelper {
 		return DriverManager.getConnection(url, name, pwd);
 	}
 	
-	
-	
+	public static void main(String[] args) throws Exception  {
+		List<User> list1 =selectList("select * from user where uid<30",
+				new ResultSetMapper<User>() {
+			
+					public User map(ResultSet rs) throws SQLException{
+						User ss=new User();
+						ss.setUid(rs.getInt("uid"));
+						ss.setUname(rs.getString("uname"));
+						ss.setPhone(rs.getString("phone"));
+						ss.setEmail(rs.getString("email"));
+						ss.setAddress(rs.getString("address"));
+							
+							return ss;
+					}
 
+				});
+				System.out.println(list1.size());
+				System.out.println(list1);
+	}
+	
+	//修改参数
+	
+	public static int update(String sql, Object...params) throws SQLException {
+		System.out.println("SQL:"+sql);
+		System.out.println("参数:"+Arrays.toString(params));
+		Connection conn=getConnection();
+		try {
+			//创建语句对象
+			PreparedStatement ps=conn.prepareStatement(sql);
+			//设置查询参数
+			for(int i=0;i<params.length;i++) {
+				ps.setObject(i+1, params[i]);
+			}
+			return ps.executeUpdate();
+		}finally {
+			conn.close();
+		}
+		
+	}
+	
 	/*查询歌手数据
 	 * 
 	 * @return
@@ -134,25 +172,6 @@ public class DBHelper {
 	
 		public static interface ResultSetMapper<T>{
 			T map(ResultSet rs)throws SQLException;
-		}
-
-		
-		public static int  updata(String sql,Object...params)throws SQLException {
-			System.out.println("SQL："+sql);
-			System.out.println("参数："+Arrays.toString(params));
-			Connection conn=getConnection();
-			try {
-				//创建语句对象
-				PreparedStatement ps=conn.prepareStatement(sql);
-				//设置查询
-				for (int i = 0; i < params.length; i++) {
-					ps.setObject(i+1, params[i]);
-				}
-				return ps.executeUpdate();
-			} finally {
-				conn.close();
-			}
-			
 		}
 
 		/**

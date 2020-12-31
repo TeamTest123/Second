@@ -1,12 +1,12 @@
 package com.yc.biz;
 
 import java.sql.SQLException;
-
 import com.yc.bean.User;
 import com.yc.dao.UserDao;
 
 
 public class UserBiz {
+	
 
 	private UserDao udao=new UserDao();
 	public void register(User user) throws BizException {
@@ -28,7 +28,6 @@ public class UserBiz {
 		}
 		
 		
-		
 		//判断当前用户名是否被注册
 	try {
 			int cnt =udao.countByName(user.getUname());
@@ -44,4 +43,37 @@ public class UserBiz {
 		
 		
 	}
+	/**
+	 * 删除用户
+	 * @param uid
+	 */
+	public void delete(String uid) {
+		System.out.println(uid);
+		if(uid==null) {
+			
+		}
+		
+		try {
+			udao.deleteByUid(Integer.parseInt(uid));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 新加用户
+	 * @param ss
+	 */
+	public void create(User ss) {
+		if(ss.getUname()==null) {
+			
+		}
+		try {
+			udao.insert(ss);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }

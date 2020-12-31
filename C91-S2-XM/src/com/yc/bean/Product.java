@@ -79,6 +79,10 @@ public class Product implements java.io.Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public String setNumber(String parameter) {
+		return parameter;
+		
+	}
 	
 	
 	

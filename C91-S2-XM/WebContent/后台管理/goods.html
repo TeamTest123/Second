@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>天天生鲜-商品列表</title>
+ <link href="images/1.jpg" rel="icon" type="images/x-icon">
+ <link rel="stylesheet" type="text/css"href="css/reset.css">
+ <link rel="stylesheet" type="text/css"href="css/main.css">
+ <link rel="stylesheet" type="text/css"href="css/goods.css">
+ <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+ <script type="text/javascript" src="js/check.js"></script>
+ <script type="text/javascript" src="js/goods.js"></script>
+</head>
+<body>
+<div id="yc_goods">
+	<!-- 头部  -->
+	<div class="header_con">
+    	<div class="header">
+    		<div class="welcome fl">欢迎来到天天生鲜</div>
+    		<div class="fr">
+            	<div class="login_btn fl">
+                	<a href="login.html"><span class="showLogin" id="showLogin"></span></a>
+                	<span id="exitspan" style="display: none"></span>
+                </div>
+               
+            	 <div class="user_link fl">
+                    <span> | </span>
+                    <a href="user_Info.jsp">用户中心</a>
+                    <span> | </span>
+                    <a href="buyCar.html">我的购物车</a>
+                    <span> | </span>
+                    <a href="order.html">我的订单</a>
+           		 </div> 
+             </div>  
+    	</div>
+    </div>
+    
+     <!-- 搜素框 -->
+     <div class="search_bar clearfix">
+        <a href="index.html" class="logo fl"><img src="images/logo.png"></a>
+        <div class="search_con fl">
+            <input type="text" placeholder="搜素商品" name="q" class="input_text fl">
+            <input type="button" value="搜索" name="" class="input_btn fr">
+        </div>
+        <div class="guest_cart fr">
+            <a href="buyCar.html" class="cart_name fl">我的购物车</a>
+            <div class="goods_count fl" id="show_count">{{goodCount}}</div>
+        </div>
+     </div>
+     
+    <!-- 全部商品分类 --> 
+    <div class="navbar_con">
+    	<div class="navbar clearfix">
+        	<!-- 动态下拉框 -->
+    		<div class="subnav_con fl">
+            	<h1 >全商品分类</h1>
+            	<span></span>
+                <ul class="subnav">
+                    <li><a href="goods.html" class="fruit">新鲜水果</a></li>
+                    <li><a href="#" class="sealfood">海鲜水产</a></li>
+                    <li><a href="#" class="meet">猪牛羊肉</a></li>
+                    <li><a href="#" class="egg">禽类蛋品</a></li>
+                    <li><a href="#" class="vegetables">新鲜蔬菜</a></li>
+                    <li><a href="#" class="ice">速冻食品</a></li>
+            	</ul>
+            </div>
+    		<ul class="navlist fl">
+    			<li><a href="index.html">首页</a></li>
+                <li class="interval">|</li>
+                <li><a href="">手机生鲜</a></li>
+                <li class="interval">|</li>
+                <li><a href="">抽奖</a></li>
+    		</ul>
+    	</div>
+    </div>
+     
+    <!-- 面包屑导航 --> 
+    <div class="breadcrumb" id="breadcrumb">
+     	<a href="#">全部分类</a>
+        <span>&gt;</span>
+        <a href="#">{{tname}}</a>
+     </div>
+     
+     <!-- 商品展示区域-->
+     <div class="main_wrap clearfix">
+     	<!-- 新品推荐 -->
+        <div class="l_wrap fl clearfix">
+        	<div class="new_goods">
+            	<h3>新品推荐</h3>
+            	<ul>
+                	<li>
+                    	<a href="#"><img src="images/goods/goods003.jpg"></a>
+                        <h4><a href="#">牛奶草莓</a></h4>
+                        <div class="prize">￥16.80</div>
+                    </li>
+                	<li>
+                    	<a href="#"><img src="images/goods/goods009.jpg"></a>
+                         <h4><a href="#">海南帝王蕉</a></h4>
+                        <div class="prize">￥99.00</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 热门类型查询 -->
+        <div class="r_wrap fr clearfix">
+        	<div class="sort_bar">
+            	<a href="javascript:void(0);" id="normal" class="type active">默认</a>
+                <a href="javascript:void(0);" id="price" class="type ">价格</a>
+                <a href="javascript:void(0);" id="manUse" class="type ">人气</a>
+            </div>
+        	<ul class="goods_type_list clearfix show1">
+               <li v-for="good in goods">
+               <a :href="'detail.html#'+good.gno+'&'+tname"><img :src="good.pics"></a>
+               <h4><a :href="'detail.html#'+good.gno+'&'+tname">{{good.dname}}</a></h4>
+               <div class="operate">
+               <span class="prize">￥{{good.price}}</span>
+               <span class="unit">{{good.price}}/{{good.weight+''+good.unit}}</span>
+               <a href="javascript:void(0)" @click="addCart(good.dno)" class="add_goods" title="加入购物车"></a>
+               </div>
+            </ul>
+			     <!-- 分页栏-->
+			<div class="pagenation">
+				<ul>
+					<li><a href="#">上一页</a></li>
+					<li><a href="#" class="active">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">下一页</a></li>
+				</ul>
+			</div>
+        </div>
+   
+     </div>
+     </div>
+    <!-- 版权所有 -->
+    <div class="footer">
+    	<div class="foot_link">
+        	<a href="#">关于我们</a> <span> | </span>
+            <a href="#">联系我们</a> <span> | </span>
+            <a href="#">招聘广告</a> <span> | </span>
+            <a href="#">友情链接</a>
+        </div>
+    	<p>CopyRight &copy; 2019 衡阳市源辰信息科技有限公司 All Rights Reserverd</p>
+        <p>电话：0734-8355998 湘ICP备16015987号</p>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script type="text/javascript" src="js/qs.js"></script>
+    <script type="text/javascript">
+    var page=1;
+    var rows=10;
+    var tno=1;
+    var tname='';
+    var hashs=decodeURI(location.hash);//#1&新鲜水果
+    hashs=hashs.replace('#','').split('&');
+    if(hashs.length!=2){
+    	alert('格式不合法');
+    }
+    tno=hashs[0];
+    tname=hashs[1];
+    
+    let vm=new Vue({
+    	el:'#yc_goods',
+    	data:{
+    		goods:{},
+    		carts:{},
+    		goodCount:0,
+    		tname:'',
+    		onlogin:false,
+    		mno:''
+    	},
+    	mounted:function(){
+    		this.tname=tname;
+    		axios.all([check(),getGoodsInfo()]).then(axios.spread((fn1,fn2)=>{
+    			if(fn1.data.member){
+    				this.onlogin=true;
+    				this.mno=fn1.data.member.mno;
+    				//用户登录
+    				if(fn1.data.carts){
+    					this.carts=fn1.data.carts;
+    					this.goodCount=fn1.data.goodCount;
+    				}
+    			}
+    			console.log(fn2.data);
+    			this.goods=fn2.data.rows;
+    			console.log(this.goods);
+    		}));
+    	},
+    	methods:{
+    		addCart:function(gno){
+    			if(this.onlogin){
+    				axios.get("carts.action",{params:{op:'add',gno:gno,mno:this.mno}}).then(result=>{
+    					if(result.data.code==1){
+    						//添加成功 数量=1
+    						this.goodCount++;
+    					}
+    					alert(result.data.msg);
+    				});
+    			}else{
+    				alert('用户未登录');
+    			}
+    		}
+    	}
+    });
+    //检查用户是否登录
+    function check(){
+    	return axios.get("member.action?op=check");
+    }
+    //获取商品信息
+    function getGoodsInfo(){
+    	return axios.get("goods.action?op=findPage&tno="+tno+"&page=1&rows=10");
+    }
+    </script>
+</body>
+</html>
