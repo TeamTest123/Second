@@ -14,7 +14,7 @@
 							<td>
 								<input type="text" id="gname" name="title" class="input-text lh30" size="40" placeholder="请输入商品名称">
 							</td>
-							<td class="td_right">商品单价：</td>
+							<td class="td_right">商品价格：</td>
 							<td>
 								<input type="number" id="price" name="price" class="input-text lh30" size="40" placeholder="单价">
 							</td>
@@ -24,20 +24,9 @@
 							<td>
 								<input type="number" id="balance" name="balance" class="input-text lh30" size="40" placeholder="库存">
 							</td>
-							<td class="td_right">商品单位：</td>
-							<td>
-								<input type="text" id="unit" name="unit" class="input-text lh30" size="40" placeholder="单位">
-							</td>
-							<td class="td_right">保质期：</td>
-							<td>
-								<input type="text" id="qperied" name="qperied" class="input-text lh30" size="40" placeholder="保质期">
-							</td>
 						</tr>
 						<tr>
-							<td class="td_right">商品净重：</td>
-							<td>
-								<input type="text" id="weight" name="weight" class="input-text lh30" size="40" placeholder="净重">
-							</td>
+
 							<td class="td_right">商品图片：</td>
 							<td>
 								<input type="file" id="pics" name="pics" class="input-text lh30" size="40" multiple="multiple">
@@ -93,7 +82,7 @@
 		console.log(descr);
 		//文件上传
 		$.ajaxFileUpload({
-			url:'../../goodFileUpload.action',
+			url:'../product.s',
 			secureuri:false,
 			fileElementId:'pics',
 			dataType:'json',
