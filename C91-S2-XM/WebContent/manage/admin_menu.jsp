@@ -14,7 +14,7 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
+                <li><a class="on" href="admin_index.jsp">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
@@ -37,13 +37,12 @@
                 <li>
                     <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
-                        <li><a href="design.html"><i class="icon-font">&#xe008;</i>作品管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe005;</i>博文管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe006;</i>分类管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe004;</i>留言管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe012;</i>评论管理</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe052;</i>友情链接</a></li>
-                        <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                        <li><a href="admin_user.jsp"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+                        <li><a href="admin_cate.jsp"><i class="icon-font">&#xe005;</i>分类管理</a></li>
+                        <li><a href="admin_product.jsp"><i class="icon-font">&#xe004;</i>订单管理</a></li>
+                        <li><a href="admin_order.jsp"><i class="icon-font">&#xe012;</i>评论管理</a></li>
+                        <li><a href="admin_message.jsp"><i class="icon-font">&#xe052;</i>友情链接</a></li>
+                        <li><a href="admin_news.jsp"><i class="icon-font">&#xe033;</i>广告管理</a></li>
                     </ul>
                 </li>
                 <li>
