@@ -1,27 +1,22 @@
 package com.yc.bean;
 
-public class Product implements java.io.Serializable{
-
-	/**
-	 * 
-	 */
+public class ProductVO implements java.io.Serializable{
+/**
+ * 商品和商品类型
+ */
 	private static final long serialVersionUID = 1L;
-
 	private Integer pid;
 	private String product_type;
 	private String image;
-	private String email;
 	private String pname;
 	private String price;
 	private String color;
 	private String content;
 	private Integer number;
-	@Override
-	public String toString() {
-		return "product [pid=" + pid + ", product_type=" + product_type + ", image=" + image + ", email=" + email
-				+ ", pname=" + pname + ", price=" + price + ", color=" + color + ", content=" + content + ", number="
-				+ number + "]";
-	}
+	private Integer sid;
+	private String bname;
+	private Integer fid;
+	
 	public Integer getPid() {
 		return pid;
 	}
@@ -39,12 +34,6 @@ public class Product implements java.io.Serializable{
 	}
 	public void setImage(String image) {
 		this.image = image;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPname() {
 		return pname;
@@ -76,14 +65,30 @@ public class Product implements java.io.Serializable{
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Integer getSid() {
+		return sid;
 	}
-	public String setNumber(String parameter) {
-		return parameter;
-		
+	public void setSid(Integer sid) {
+		this.sid = sid;
+	}
+	public String getBname() {
+		return bname;
+	}
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+	public Integer getFid() {
+		return fid;
+	}
+	public void setFid(Integer fid) {
+		this.fid = fid;
 	}
 	
-	
-	
+	@Override
+	public String toString() {
+		return "productVO [pid=" + pid + ", product_type=" + product_type + ", image=" + image + 
+				", pname=" + pname + ", price=" + price + ", color=" + color + ", content=" + content + ", number="
+				+ number + "sid=" + sid + ", bname=" + bname + ", fid=" + fid +"]";
+	}
+
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>后台管理-控制台</title>
+<title>Nuevo-后台管理系统</title>
 <link rel="stylesheet" type="text/css"
 	href="../easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
@@ -12,12 +12,91 @@
 	src="../easyui/locale/easyui-lang-zh_CN.js"></script>
 
 <script type="text/javascript">
-	function openTab
+	function openTab(){
+		$('#tt').tabs(
+				'add',
+				{
+					title : "用户信息管理",
+					//href : 'Singer.html',//href引入子页面存在Bug，设计有缺陷
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='User.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	function openTab1() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "商品信息管理",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='product.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
 
 
 </script>
 </head>
 <body>
 
+	<div id="cc" class="easyui-layout" data-options="fit:true">
+		<div
+			data-options="region:'north',title:'North Title',collapsible:false"
+			style="height: 100px;"></div>
+		<div
+			data-options="region:'south',title:'South Title',collapsible:false"
+			style="height: 100px;"></div>
+		<div
+			data-options="region:'west',title:'West',split:true,minWidth:'200px' "
+			class="easyui-accordion" style="width: 100px;">
+			
+			<!--accordion :抽屉控件实现菜单分类管理  -->
+			<div title="用户" data-options="iconCls:'icon-save' "
+				style="
+				overflow: auto; 
+				padding: 10px;
+				text-align:center;
+				line-height:40px ">
+				
+				<a id="btn" href="#" class="easyui-linkbutton"
+					data-options="
+        			iconCls:'icon-search',
+        			width:150,
+        			onClick:openTab">用户信息管理</a>
+        			
+
+        	</div>
+        	<div title="商品" data-options="iconCls:'icon-reload '"
+				style="
+				overflow: auto; 
+				padding: 10px;
+				text-align:center;
+				line-height:40px ">
+				
+				<a id="btn" href="#" class="easyui-linkbutton"
+					data-options="
+					iconCls:'icon-search',
+					width:150,
+					onClick:openTab1 ">商品信息查询</a>
+				<a id="btn" href="#" class="easyui-linkbutton"
+					data-options="
+					iconCls:'icon-search',
+					width:150,
+					onClick:openTab1 ">商品信息增加</a>
+			
+						
+				</div>
+			<div title="订单">Content3</div>
+        	</div>
+        		<div id="tt" data-options="region:'center' " class="easyui-tabs"
+			style="padding: 5px; background: #eee;"></div>
+        		<div id="tt" data-options="region:'center' " class="easyui-tabs1"
+			style="padding: 5px; background: #eee;"></div>
+
+
+
+</div>
 </body>
 </html>

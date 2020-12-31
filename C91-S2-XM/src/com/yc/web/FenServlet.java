@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.yc.bean.Category;
-import com.yc.dao.FenDao;
+import com.yc.dao.fenDao;
 
 
 /**
@@ -22,7 +22,7 @@ import com.yc.dao.FenDao;
 public class FenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private FenDao fdao=new FenDao();
+    private fenDao fdao=new fenDao();
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");

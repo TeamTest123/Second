@@ -10,7 +10,7 @@ import com.yc.util.DBHelper.ResultSetMapper;
 
 
 
-public class FenDao {
+public class fenDao {
 
 	public List<Category>selectAllCategory() throws SQLException {
 		String sql="select * from category where fid='0'";
