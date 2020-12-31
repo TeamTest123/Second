@@ -26,9 +26,9 @@ public class UserServlet extends HttpServlet {
 		
 		try {
 			
-			lBiz.BoardLogin(uname, upwd);
+			User u=lBiz.BoardLogin(uname, upwd);
 			response.getWriter().append("登陆成功");
-			
+			request.getSession().setAttribute("user", u);
 		} catch (BizException e) {
 			e.printStackTrace();
 			response.getWriter().append("登录失败！！！ 原因:"+e.getMessage());

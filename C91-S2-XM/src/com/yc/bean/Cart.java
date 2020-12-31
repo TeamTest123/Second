@@ -1,5 +1,7 @@
 package com.yc.bean;
 
+
+
 public class Cart implements java.io.Serializable{
 
 	/**
@@ -11,10 +13,15 @@ public class Cart implements java.io.Serializable{
 	private Integer pid;
 	private Integer uid;
 	private Integer number;
+
 	@Override
 	public String toString() {
-		return "cart [cid=" + cid + ", pid=" + pid + ", uid=" + uid + ", number=" + number + "]";
+		return "Cart [cid=" + cid + ", pid=" + pid + ", uid=" + uid  + ", number=" + number
+				+ "]";
 	}
+	
+	
+	
 	public Integer getCid() {
 		return cid;
 	}
