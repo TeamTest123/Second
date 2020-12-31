@@ -659,7 +659,10 @@ li.selector {
 	z-index: 100;
 }
 .standard {
-	width: 100%;
+	width:100%;
+}
+.standard.active {
+	width:1148.9px;
 }
 .tag-grid {
 	background: #fff;

@@ -63,13 +63,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header">
 	  <div class="head-t">
 		 <div class="logo">
-			  <a href="index.html"><h1>Nuevo <span>Shop</span></h1> </a>
+			  <a href="index.html"><h1>购物 <span>商城</span></h1> </a>
 		  </div>
 		  <div class="header_right">
 			<div class="cart box_1">
 				<a href="checkout.html">
 				<div class="total" id='app3'>
-					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+					<span >
+					</span> 我的购物车</div>
 					<i class="glyphicon glyphicon-购物-cart"></i></a>
 					<div class="login_info fl" v-if="onlogin">
 						欢迎：<em>y c</em>
@@ -82,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="javascript:void(0)" v-if="onlogin">退出</a>
 						
 					 </div>	
-				<p><a href="javascript:;" class="simpleCart_empty">我的购物车</a></p>
+				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
 				<div class="clearfix" > </div>
 			</div>		
 				 
@@ -120,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li class="active grid"><a class="color1" href="index.html">首页</a></li>
 			<li class="grid">
 				<span v-for="c in list">
-				<a class="color2" href="#">{{c.bname}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="color9" href="#">{{c.bname}}</a>&nbsp;&nbsp;&nbsp;&nbsp;<span> | </span>
 				</span>
 				<div class="megapanel">
 					<div class="row">
@@ -139,13 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   
   
  
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
+				
     				</div>
 				</li>
 	
@@ -207,7 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<div class="standards" id='app'>
 						
-							<div  class="standard active" data-selector="1">
+							<div  class="standards" data-selector="1">
 							<div v-for="(item,i) in list" class="tag-grid">
 								<div class="tag-wrapper">		
 									<a :href="'single.html#'+item.pid"><img :src="item.image" class="img-responsive" alt="" /></a>
@@ -244,14 +239,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 		  <!--start-bottom-->
 		   <!--start-image-cursuals-->
-            <!--       <div class="scroll-slider">
+                 <div class="scroll-slider">
                   	<div class="container"> 											 
 							<div class="nbs-flexisel-container"><div class="nbs-flexisel-inner"><ul class="flexiselDemo3 nbs-flexisel-ul" style="left: -253.6px; display: block;">					    					    					       
 							<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c3.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c4.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c1.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c2.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c3.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c4.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c1.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c2.png" alt=""/></li></ul><div class="nbs-flexisel-nav-left" style="top: 21.5px;"></div><div class="nbs-flexisel-nav-right" style="top: 21.5px;"></div></div></div> 
 							<div class="clearfix"> </div>      
-						  start-image
+					
 								<script type="text/javascript" src="js/jquery.flexisel.js"></script>
-								//end
+								
 								<script type="text/javascript">
 								$(window).load(function() {
 								    $(".flexiselDemo3").flexisel({
@@ -280,10 +275,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</script>
 						
 				  </div>				
-			</div> -->
- <!--//end-bottom-->
+			</div> 
+ <!--//页尾-->
 		<!--start-footer-->
-	 <!--     <div class="footer">
+	    <div class="footer">
 		   <div class="container">
 			<div class="footer-top">
 				<div class="col-md-2 footer-left">
@@ -342,12 +337,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 
-	 /start-copyright
+
 	 <div class="copy">
 		<div class="container">
 			<p>版权所有 &copy; 20201024-韬&超-保留所有权</p>
 		</div>
-	</div>  -->
+	</div> 
 	 <!--//end-copyright-->
 	<!--end-footer-->
  <!--//end-content-->
