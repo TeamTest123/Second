@@ -1,6 +1,6 @@
 package com.yc.bean;
 
-import java.math.BigDecimal;
+
 
 public class Cart implements java.io.Serializable{
 
@@ -12,25 +12,12 @@ public class Cart implements java.io.Serializable{
 	private Integer cid;
 	private Integer pid;
 	private Integer uid;
-	private Product product;
 	private Integer number;
-	private String  count;
-	public String getCount() {
-		return count;
-	}
-
-
-
-	public void setCount(String count) {
-		this.count = count;
-	}
-
-
 
 	@Override
 	public String toString() {
-		return "Cart [cid=" + cid + ", pid=" + pid + ", uid=" + uid + ", product=" + product + ", number=" + number
-				+ ", count=" + count + "]";
+		return "Cart [cid=" + cid + ", pid=" + pid + ", uid=" + uid  + ", number=" + number
+				+ "]";
 	}
 	
 	
