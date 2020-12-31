@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.yc.bean.Cart;
 import com.yc.util.DBHelper;
 
-public class AddCArt {
+public class CartDao {
 
 	public void insert(Cart cart) throws SQLException {
 		String sql="insert into cart values(null,?,?,?)";
