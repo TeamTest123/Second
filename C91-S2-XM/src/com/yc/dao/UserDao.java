@@ -61,7 +61,7 @@ public class UserDao {
 	public void insert(User user) throws SQLException {
 
 		String sql="insert into user values(null,?,?,?,?,?,?)";
-		DBHelper.updata(sql, 
+		DBHelper.update(sql, 
 
 				user.getUname(),
 				user.getUpwd(),
