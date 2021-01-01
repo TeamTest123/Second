@@ -14,10 +14,63 @@ public class Cart implements java.io.Serializable{
 	private Integer uid;
 	private Integer number;
 
+	private String image;
+	private String pname;
+	private String price;
+	private String color;
+	
+	public String getImage() {
+		return image;
+	}
+
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+
+
+	public String getPname() {
+		return pname;
+	}
+
+
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+
+
+	public String getColor() {
+		return color;
+	}
+
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Cart [cid=" + cid + ", pid=" + pid + ", uid=" + uid  + ", number=" + number
-				+ "]";
+		return "Cart [cid=" + cid + ", pid=" + pid + ", uid=" + uid + ", number=" + number + ", image=" + image
+				+ ", pname=" + pname + ", price=" + price + ", color=" + color + "]";
 	}
 	
 	

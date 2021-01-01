@@ -19,12 +19,12 @@ import com.yc.dao.CartDao;
 public class CheckoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private CartDao dao;
+    private CartDao dao=new CartDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		List<Cart> list=null;
 		try {
-			list=dao.selectAllCategory();
+			list=dao.selectAllCart();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}

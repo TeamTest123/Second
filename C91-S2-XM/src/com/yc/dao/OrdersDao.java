@@ -12,7 +12,16 @@ import com.yc.util.DBHelper.ResultSetMapper;
 public class OrdersDao {
 
 	public List<Orders>selectOne() throws SQLException {
-		String sql="select * from category";
+		String sql="SELECT\n" +
+				"	o.did,\n" +
+				"	u.uid,\n" +
+				"	o.money,\n" +
+				"	o.pay,\n" +
+				"	o.order_status,\n" +
+				"	o.time\n" +
+				"FROM\n" +
+				"	orders o\n" +
+				"LEFT JOIN user u ON o.uid = u.uid";
 		List<Orders>list;
 		list=DBHelper.selectList(sql, new ResultSetMapper<Orders>() {
 

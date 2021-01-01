@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.yc.bean.Cart;
-import com.yc.bean.Category;
-import com.yc.bean.Product;
-import com.yc.bean.User;
+
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
 
@@ -21,32 +19,38 @@ public class CartDao {
 				cart.getNumber());
 	}
 	
-	public List<Cart>selectAllCategory() throws SQLException {
-		String sql="\"SELECT\\n\" +\r\n"
-				+ "\"	p.pname,p.color,p.price,c.number,p.image,uid\\n\" +\r\n"
-				+ "\"FROM\\n\" +\r\n"
-				+ "\"	cart c\\n\" +\r\n"
-				+ "\"LEFT JOIN product p ON c.pid = p.pid\\n\" +\r\n"
-				+ "\" where uid in(\\n\" +\r\n"
-				+ "\"SELECT\\n\" +\r\n"
-				+ "\"	u.uid\\n\" +\r\n"
-				+ "\"FROM\\n\" +\r\n"
-				+ "\"	cart a\\n\" +\r\n"
-				+ "\"LEFT JOIN user u ON a.uid = u.uid);\"";
+	public List<Cart>selectAllCart() throws SQLException {
+		String sql="SELECT\n" +
+				"	p.pname,\n" +
+				"	p.color,\n" +
+				"	p.price,\n" +
+				"	c.number,\n" +
+				"	p.image,\n" +
+				"	uid\n" +
+				"FROM\n" +
+				"	cart c\n" +
+				"LEFT JOIN product p ON c.pid = p.pid\n" +
+				"WHERE\n" +
+				"	uid IN (\n" +
+				"		SELECT\n" +
+				"			u.uid\n" +
+				"		FROM\n" +
+				"			cart a\n" +
+				"		LEFT JOIN user u ON a.uid = u.uid\n" +
+				"	)";
 		List<Cart>list;
 		list=DBHelper.selectList(sql, new ResultSetMapper<Cart>() {
 
 			@Override
 			public Cart map(ResultSet rs) throws SQLException {
 				Cart c=new Cart();
-				Product p=new Product();
-				User u=new User();
-//				p.setPname(rs.getString("pname"));
-//				p.setColor(rs.getString("color"));
-//				p.setPrice(rs.getString("price"));
+				
+				c.setPname(rs.getString("pname"));
+				c.setColor(rs.getString("color"));
+				c.setPrice(rs.getString("price"));
 				c.setNumber(rs.getInt("number"));
-//				p.setImage(rs.getString("image"));
-//				u.setUid(rs.getInt("uid"));
+				c.setImage(rs.getString("image"));
+				c.setUid(rs.getInt("uid"));
 				return c;
 			
 			}
