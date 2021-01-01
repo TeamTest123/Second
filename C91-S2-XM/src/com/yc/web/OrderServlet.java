@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.yc.bean.Category;
 import com.yc.bean.Orders;
 import com.yc.dao.OrdersDao;
 
