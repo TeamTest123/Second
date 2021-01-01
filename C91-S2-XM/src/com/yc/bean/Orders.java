@@ -1,6 +1,6 @@
 package com.yc.bean;
 
-public class Dingdan implements java.io.Serializable{
+public class Orders implements java.io.Serializable{
 
 	/**
 	 * 
