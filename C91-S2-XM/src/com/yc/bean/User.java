@@ -13,10 +13,12 @@ public class User implements java.io.Serializable{
 	private String email;
 	private String upwd;
 	private String address;
+	private String status;
+
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", phone=" + phone + ", email=" + email + ", upwd=" + upwd
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", status=" + status +"]";
 		//
 	}
 	public User() {
@@ -27,6 +29,7 @@ public class User implements java.io.Serializable{
 		this.email = email;
 		this.upwd = upwd;
 		this.address = address;
+		this.status = status;
 	}
 	public Integer getUid() {
 		return uid;
@@ -64,13 +67,19 @@ public class User implements java.io.Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return null;
 
 }
+
 	
 }

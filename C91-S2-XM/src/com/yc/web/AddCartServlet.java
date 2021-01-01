@@ -2,6 +2,7 @@ package com.yc.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
 import com.yc.bean.Cart;
-import com.yc.bean.Category;
 import com.yc.bean.User;
 import com.yc.dao.CartDao;
 
@@ -32,12 +31,12 @@ public class AddCartServlet extends HttpServlet {
 		Integer uid=u.getUid();
 		String  pid=request.getParameter("pid");
 		String number=request.getParameter("number");
-		Cart list=null;
+		
 		try {
 			cart.setPid(Integer.valueOf(pid));
 			cart.setUid(uid);
 			cart.setNumber(Integer.valueOf(number));
-			dao.insert(cart);
+		    dao.insert(cart);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
