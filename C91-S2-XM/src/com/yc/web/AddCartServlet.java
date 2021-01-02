@@ -19,10 +19,10 @@ import com.yc.dao.CartDao;
 
 
 
-@WebServlet("/AddCartServlet")
+@WebServlet("/add.s")
 public class AddCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CartDao dao;
+	private CartDao dao=new CartDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		Cart cart =new Cart();
@@ -37,17 +37,12 @@ public class AddCartServlet extends HttpServlet {
 			cart.setUid(uid);
 			cart.setNumber(Integer.valueOf(number));
 		    dao.insert(cart);
+		    response.getWriter().append("添加成功");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-//		List<Cart> list=null;
-//		list=dao.insert(cart);
-//		Gson gson =new Gson();
-//		String json=gson.toJson(list);
-//		response.getWriter().append(json);
-//				
+			response.getWriter().append("添加失败！原因："+e.getMessage());
+		}			
 	
 
 	
@@ -56,6 +51,8 @@ public class AddCartServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//String pid=request.getParameter("pid");
+		
 		doGet(request, response);
 	}
 
