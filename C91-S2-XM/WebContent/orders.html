@@ -1,41 +1,32 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Single</title>
+<title>orders</title>
 <script src="js/vue.js"></script>
-<script
-	src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Nuevo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Nuevo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />	
 <script src="js/jquery-1.11.1.min.js"></script>
 <!-- start menu -->
-<link href="css/megamenu.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <script src="js/menu_jquery.js"></script>
 <script src="js/simpleCart.min.js"> </script>
-<script src="js/bootstrap.js"> </script>
 <!--web-fonts-->
-<link
-	href='http://fonts.useso.com/css?family=Open+Sans:400,300,400italic,300italic,600,700'
-	rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto+Slab:300,400,700'
-	rel='stylesheet' type='text/css'>
+ <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,400italic,300italic,600,700' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.useso.com/css?family=Roboto+Slab:300,400,700' rel='stylesheet' type='text/css'>
 <!--//web-fonts-->
+ <script src="js/scripts.js" type="text/javascript"></script>
 <script src="js/modernizr.custom.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
-
 <!--/script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -45,279 +36,92 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				});
 			});
 </script>
-<!-- the jScrollPane script -->
-<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" id="sourcecode">
-			$(function()
-			{
-				$('.scroll-pane').jScrollPane();
-			});
-		</script>
-<!-- //the jScrollPane script -->
 </head>
 <body>
-	<!--start-home-->
-	<!-- header_top -->
-	<div class="top_bg" id="home">
-		<div class="container">
-			<div class="header_top">
-				<div class="top_right">
-					<ul>
-						<li><a href="#">help</a></li>
-						<li><a href="contact.html">Contact</a></li>
-						<li><a href="#">Delivery information</a></li>
-					</ul>
-				</div>
-				<div class="top_left">
-					<h6>
-						<span></span> 联系电话: 032 2352 782
-					</h6>
-				</div>
-				<div class="clearfix"></div>
+<!--start-home-->
+<div class="top_bg" id="home">
+	<div class="container">
+		<div class="header_top">
+			<div class="top_right">
+				<ul>
+					<li><a href="#">help</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="#">Delivery information</a></li>
+				</ul>
 			</div>
+			<div class="top_left">
+				<h6><span></span> Call us : 032 2352 782</h6>
+			</div>
+				<div class="clearfix"> </div>
 		</div>
 	</div>
-	<!-- header -->
-	<div class="header_bg">
-		<div class="container">
-			<div class="header">
-				<div class="head-t">
-					<div class="logo">
-						<a href="index.html"><h1>
-								购物 <span>商城</span>
-							</h1> </a>
-					</div>
-					<div class="header_right">
-						<div class="cart box_1">
-							<a href="checkout.html">
-								<div class="total">
-									<span class="simpleCart_total"></span>
-									
-								</div> <i class="glyphicon glyphicon-shopping-cart"></i>
-							</a>
-							<p>
-								<a href="javascript:;" class="simpleCart_empty">清空购物车</a>
-							</p>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
+</div>
+<!-- header -->
+
+ <!--start-content-->
+<!--contact-->
+   <div class="contact" id="d">
+	  <div class="container" >
+			<h3 class="tittle con">订单信息</h3>
+			     <div class="lcontact span_1_of_contact" >
+				      <div class="contact-form" v-for="c in list">
+				  	        <form>
+					    	    <p class="comment-form-author"><label>客户编号：{{c.did}}</label>
+					    	    	
+						    	</p>
+						    	<p class="comment-form-author"><label>总金额：{{c.money}}</label>
+					    	    	
+						    	</p>
+						    	<p class="comment-form-author"><label>支付方式：{{c.pay}}</label>
+					    	    	
+						    	</p>
+						    	<p class="comment-form-author"><label>订单状态：{{c.order_status}}</label>
+					    	    	
+						    	</p>
+						        <p class="comment-form-author"><label>时间：{{c.time}}</label>
+						     	   
+						        </p>
+						      
+						        <span>---------------------------------</span>
+					        </form>
+				       </div>
+			     </div>
+			   
+		        <div class="clearfix"></div>
+				<div class="map">
+
 				</div>
-			</div>
-			<!--start-header-menu-->
-			<ul class="megamenu skyblue" id='app1'>
-				<li class="active grid"><a class="color1" href="index.html">首页</a></li>
-				<li class="grid"><span v-for="c in list"> <a
-						class="color2" href="#">{{c.bname}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				</span>
-					<div class="megapanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">
-
-									<ul>
-										<li><a href="product.html"></a></li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-
-						<div class="row">
-							<div class="col2"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-						</div>
-					</div></li>
-
-				<li><a class="color9" href="#">手表</a>
-					<div class="megapanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">
-
-									<ul>
-										<li><a href="product.html">新品抢先看</a></li>
-										<li><a href="product.html">men</a></li>
-										<li><a href="product.html">women</a></li>
-										<li><a href="product.html">配件</a></li>
-										<li><a href="product.html">童装</a></li>
-										<li><a href="product.html">品牌</a></li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col2"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-						</div>
-					</div></li>
-			</ul>
-		</div>
-	</div>
-
-	<script type="text/javascript">
-  		 var v=new Vue({
-  			el:"#app1",
-  			data:{
-  				list:[],
-  			},
-  			created(){
-  				axios.get("fen.s").then(res=>{
-  					//res axios 封装的响应结果对象
-  					this.list=res.data;
-  					console.log(res.data);
-  				});
-  			}
-  		}) 
-  		 </script>
-	<!--start-content-->
-	<!-- products -->
-	<div class="products" id="intro">
-		<div class="container">
-			<div class="products-grids">
-				<div class="col-md-8 products-single">
-					<div class="col-md-5 grid-single">
-						<div class="flexslider">
-							<ul class="slides">
-									<div>
-										<img :src="product.image" data-imagezoom="true"
-											class="img-responsive" alt="" />
-									</div>
-
-							</ul>
-						</div>
-						
-
-					</div>
-					<div class="col-md-7 single-text">
-						<div class="details-left-info simpleCart_shelfItem">
-							<h3>商品名称</h3>
-							<p class="availability">
-								{{product.pname}}<span class="color"></span>
-							</p>
-							<div class="price_single">
-								<h3>商品价格</h3>
-								<span class="actual item_price">{{product.price}}</span><a
-									href="#"></a>
-							</div>
-							<h3>颜色</h3>
-							<ul class="product-colors">
-								<li><a  href="#"><span>{{product.color}}
-									</span></a></li>
-
-							</ul>
-
-							<div class="quantity_box">
-								<span>库存</span>
-								<div class="product-qty">
-									<span>{{product.number}}</span>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-							<div class="single-but item_add">
-								<input type="submit" value="加入购物车" />
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-
-				<div class="clearfix"></div>
-				<!-- collapse -->
-				<div class="panel-group collpse" id="accordion" role="tablist"
-					aria-multiselectable="true">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion"
-									href="#collapseOne" aria-expanded="true"
-									aria-controls="collapseOne"> 商品详情 </a>
-							</h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in"
-							role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body">{{product.content}}</div>
-						</div>
-					</div>
-
-
-
-					<!-- collapse -->
-					<!--/start-latest-->
-
-					<!--//latest-->
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- FlexSlider -->
-	<script src="js/imagezoom.js"></script>
-	<script defer src="js/jquery.flexslider.js"></script>
-	<script>
-	// Can also be used with $(document).ready()
-	$(window).load(function() {
-	  $('.flexslider').flexslider({
-		animation: "slide",
-		controlNav: "thumbnails"
-	  });
-	});
-	</script>
-	<script type="text/javascript">
-	var v=new Vue({
-		el:"#intro",
-		data:{
-			product:''
-		},
-		created(){
-			axios.get("singer.s?id="+location.hash.substring(1)).then(res=>{
+	  </div>
+  </div>
+  <script type="text/javascript">
+  var v=new Vue({
+	  el:'#d',
+	  data:{
+		  list:'',
+	  },
+	  created(){
+			axios.get("order.s").then(res=>{
+				//res axios 封装的响应结果对象
+				this.list=res.data;
 				console.log(res.data);
-				this.product=res.data;
-			})
+			});
 		}
-	})
-	</script>
-	<!-- //products -->
-	<!--start-bottom-->
-	<!--start-image-cursuals-->
-	<div class="scroll-slider">
-		<div class="container">
-			<div class="nbs-flexisel-container">
-				<div class="nbs-flexisel-inner">
-					<ul class="flexiselDemo3 nbs-flexisel-ul"
-						style="left: -253.6px; display: block;">
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c3.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c4.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c1.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c2.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c3.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c4.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c1.png" alt="" /></li>
-						<li onclick="location.href='#';" class="nbs-flexisel-item"
-							style="width: 253.6px;"><img src="images/c2.png" alt="" /></li>
-					</ul>
-					<div class="nbs-flexisel-nav-left" style="top: 21.5px;"></div>
-					<div class="nbs-flexisel-nav-right" style="top: 21.5px;"></div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-			<!--start-image-->
-			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
-			<!--//end-->
-			<script type="text/javascript">
+  })
+  
+  
+  </script>
+ <!--//checkout-->
+      <!--start-bottom-->
+		    <!--start-image-cursuals-->
+                  <div class="scroll-slider">
+                  	<div class="container"> 											 
+							<div class="nbs-flexisel-container"><div class="nbs-flexisel-inner"><ul class="flexiselDemo3 nbs-flexisel-ul" style="left: -253.6px; display: block;">					    					    					       
+							<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c3.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c4.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c1.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c2.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c3.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c4.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c1.png" alt=""/></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/c2.png" alt=""/></li></ul><div class="nbs-flexisel-nav-left" style="top: 21.5px;"></div><div class="nbs-flexisel-nav-right" style="top: 21.5px;"></div></div></div> 
+							<div class="clearfix"> </div>      
+						  <!--start-image-->
+								<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+								<!--//end-->
+								<script type="text/javascript">
 								$(window).load(function() {
 								    $(".flexiselDemo3").flexisel({
 								        visibleItems: 5,
@@ -343,88 +147,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								    });
 								});
 								</script>
-			<!---->
-		</div>
-	</div>
-	<!--//end-bottom-->
-	<!--start-footer-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-top">
-				<div class="col-md-2 footer-left">
-					<h3>About Us</h3>
-					<ul>
-						<li><a href="#">Who We Are</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						<li><a href="#">Our Sites</a></li>
-						<li><a href="#">In The News</a></li>
-						<li><a href="#">Carrers</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left">
-					<h3>Your Account</h3>
-					<ul>
-						<li><a href="account.html">Your Account</a></li>
-						<li><a href="#">Personal Information</a></li>
-						<li><a href="contact.html">Addresses</a></li>
-						<li><a href="#">Discount</a></li>
-						<li><a href="#">Track your order</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left">
-					<h3>Shopping</h3>
-					<ul>
-						<li><a href="#">Accesories</a></li>
-						<li><a href="#">Books</a></li>
-						<li><a href="#">Cloths</a></li>
-						<li><a href="#">Bags</a></li>
-						<li><a href="#">Shoes</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left ">
-					<h3>Categories</h3>
-					<ul>
-						<li><a href="#">Sports Shoes</a></li>
-						<li><a href="#">Casual Shorts</a></li>
-						<li><a href="#">Formal Shoes</a></li>
-						<li><a href="#">Party Wear</a></li>
-						<li><a href="#">Ethnic Wear</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left lost">
-					<h3>Life Style</h3>
-					<ul>
-						<li><a href="#">Spa</a></li>
-						<li><a href="#">Beauty</a></li>
-						<li><a href="#">Travel</a></li>
-						<li><a href="#">Food</a></li>
-						<li><a href="#">Trends</a></li>
-					</ul>
-				</div>
-				<div class="clearfix"></div>
+						<!---->
+				  </div>				
 			</div>
-
-		</div>
-	</div>
+ <!--//end-bottom-->
+		<!--start-footer-->
+	
 	<ul class="socials">
-		<li><a class="soc1" href="#"></a></li>
-		<li><a class="soc2" href="#"></a></li>
-		<li><a class="soc3" href="#"></a></li>
-	</ul>
-	<!--/start-copyright-->
-	<div class="copy">
+				    <li><a class="soc1" href="#"></a></li>
+				    <li><a class="soc2" href="#"></a></li>
+				    <li><a class="soc3" href="#"></a></li>
+				</ul>
+	 <!--/start-copyright-->
+	 <div class="copy">
 		<div class="container">
-			<p>
-				Copyright &copy; 2015.Company name All rights reserved.<a
-					target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-			</p>
+			<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 		</div>
 	</div>
-	<!--//end-copyright-->
+	 <!--//end-copyright-->
 	<!--end-footer-->
-	<!--//end-content-->
-	<!--start-smooth-scrolling-->
-	<script type="text/javascript">
+ <!--//end-content-->
+    	<!--start-smooth-scrolling-->
+						<script type="text/javascript">
 									$(document).ready(function() {
 										/*
 										var defaults = {
@@ -439,9 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										
 									});
 								</script>
-	<a href="#home" id="toTop" class="scroll" style="display: block;">
-		<span id="toTopHover" style="opacity: 1;"> </span>
-	</a>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 
 </body>

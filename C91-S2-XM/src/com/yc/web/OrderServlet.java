@@ -11,20 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.yc.bean.Cart;
-import com.yc.dao.CartDao;
+import com.yc.bean.Orders;
+import com.yc.dao.OrdersDao;
 
 
-@WebServlet("/check.s")
-public class CheckoutServlet extends HttpServlet {
+@WebServlet("/order.s")
+public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private CartDao dao=new CartDao();
+   
+   private OrdersDao dao=new OrdersDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		List<Cart> list=null;
+		List<Orders> list=null;
 		try {
-			list=dao.selectAllCart();
+			list=dao.selectOne();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -35,6 +36,7 @@ public class CheckoutServlet extends HttpServlet {
 		response.getWriter().append(json);
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
