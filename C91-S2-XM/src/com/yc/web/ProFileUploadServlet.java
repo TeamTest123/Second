@@ -12,6 +12,7 @@ import com.yc.util.FileUploadUtil;
 import com.yc.util.LogUtil;
 
 
+
 @WebServlet("/product.s")
 public class ProFileUploadServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,8 +30,8 @@ public class ProFileUploadServlet extends BaseServlet {
 			
 		} catch (Exception e) {
 			LogUtil.log.error("商品信息文件上传异常！"+e.getMessage());
-			printJSon(response,0,null);
-			e.printStackTrace();
+			
+			
 		}
 		
 	}

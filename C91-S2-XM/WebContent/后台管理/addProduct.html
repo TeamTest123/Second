@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>添加商品</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
 <link rel="stylesheet" type="text/css"
 	href="../easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
@@ -21,21 +24,21 @@
 						<tbody><tr>
 							<td class="td_right">商品类型：</td>
 							<td>
-								<input type="text" id="product_type" name="title" class="input-text lh30" size="40" placeholder="请输入商品类型">
+								<input type="text" v-model="product_type" name="title" class="input-text lh30" size="40" placeholder="请输入商品类型">
 							</td>
 							<td class="td_right">商品名称：</td>
 							<td>
-								<input type="text" id="pname" name="title" class="input-text lh30" size="40" placeholder="请输入商品名称">
+								<input type="text" v-model="pname" name="title" class="input-text lh30" size="40" placeholder="请输入商品名称">
 							</td>
 							<td class="td_right">商品数量：</td>
 							<td>
-								<input type="number" id="number" name="number" class="input-text lh30" size="40" placeholder="商品数量">
+								<input type="number" v-model="number" name="number" class="input-text lh30" size="40" placeholder="商品数量">
 							</td>
 						</tr>
 						<tr>
 							<td class="td_right">商品颜色：</td>
 							<td>
-								<input type="text" id="color" name="color" class="input-text lh30" size="40" placeholder="颜色">
+								<input type="text" v-model="color" name="color" class="input-text lh30" size="40" placeholder="颜色">
 							</td>
 							
 							
@@ -43,11 +46,11 @@
 						<tr>
 							<td class="td_right">商品价格：</td>
 							<td>
-								<input type="text" id="price" name="price" class="input-text lh30" size="40" placeholder="单价">
+								<input type="text" v-model="price" name="price" class="input-text lh30" size="40" placeholder="单价">
 							</td>
 							<td class="td_right">商品图片：</td>
 							<td>
-								<input type="file" id="image" name="image" class="input-text lh30" size="40" multiple="multiple">
+								<input type="file" v-model="image" name="image" class="input-text lh30" size="40" multiple="multiple">
 							</td>
 							<td></td>
 							<td></td>
@@ -63,12 +66,12 @@
 						<tr>
 							<td class="td_right">商品详情介绍：</td>
 							<td colspan="5">
-								 <textarea name="content" id="content" rows="10" cols="80"></textarea>
+								 <textarea name="content" v-model="content" rows="10" cols="80"></textarea>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="4" align="center">
-								<input type="button" name="button" class="btn btn82 btn_save2" onclick="addProduct()" value="添加">
+								<input type="button" name="button" class="btn btn82 btn_save2" @click="save()" value="添加">
 								<input type="reset" name="button" class="btn btn82 btn_res" value="重置">
 							</td>
 						</tr>
@@ -80,40 +83,44 @@
 	
 	<script type="text/javascript">
 	//添加商品
-	function addProduct(){
-		//获取所有的元素
-		var product_type=$("#product_type").val();
-		var image=$("#image").val();
-		var pname=$("#pname").val();
-		var unit=$("#price").val();
-		var qperied=$("#color").val();
-		var weight=$("#content").val();
-		var intro=$("#number").val();
-
-		//文件上传
-		$.ajaxFileUpload({
-			url:'../product.s',
-			secureuri:false,
-			fileElementId:'images',
-			dataType:'json',
-			data:{product_type:product_type,image:image,pname:pname,price:price,color:color,
-				content:content,number:number},
-				
-				success:function(data,status){
-					if(data.code==1){
-						$.messager.show({
-							title:'温馨提示',
-							msg:'添加成功',
-							timeout:5000,
-							showType:'slide'
-						});
-					}else{
-						$.messager.alert('警告','添加失败');
-					}
+		var v=new Vue({
+			el : "form",
+			data : {
+				product_type:"",
+				image:"",
+				pname:"",
+				price:"",
+				color:"",
+				content:"",
+				number:""
+			},
+			methods : {
+				save(){
+					var p = new URLSearchParams();
+					p.append("product_type",this.product_type);
+					p.append("image",this.image);
+					p.append("pname",this.pname);
+					p.append("price",this.price);
+					p.append("color",this.color);
+					p.append("content",this.content);
+					p.append("number",this.number);
+					
+					
+					
+					axios.post("../productServlet.action", p).then(res=>{
+	  					//res axios 封装的响应结果对象
+	  					this.list=res.data;
+	  					console.log(res.data);
+	  					
+					});
 				}
+
+			
+			}
 		});
-		
-	}
+	
+	
+	
 	
 	</script>
 	</div>
