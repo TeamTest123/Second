@@ -1,6 +1,8 @@
 package com.yc.web;
 
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,21 +18,25 @@ public class ProFileUploadServlet extends BaseServlet {
    private ProductBiz pBiz=new ProductBiz();
    
 	
-	protected void save(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//解析请求对象  文件上传
 		
 		try {
 			Product bean=FileUploadUtil.parseRequest(request, Product.class);
 			//调用业务层代码
 			pBiz.add(bean);
-			printJson(response,1,null);
+			printJSon(response,1,null);
 			
 		} catch (Exception e) {
 			LogUtil.log.error("商品信息文件上传异常！"+e.getMessage());
-			printJson(response,0,null);
+			printJSon(response,0,null);
+			e.printStackTrace();
 		}
 		
 	}
+
+
+
 
 
 
