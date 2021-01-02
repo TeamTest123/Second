@@ -796,7 +796,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 account-left second">
 					<form id="t">
 						<div class="account-top heading">
-							<h3>老用户登录</h3>
+							<h3>用户登录</h3>
 						</div>
 						<div class="address">
 							<span>电子邮箱或用户名</span>
@@ -878,12 +878,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									
 									var url="loginUser.s";
 									var p=new URLSearchParams();
-									p.append("adname",this.adname);
-									p.append("adpwd",this.adpwd);
+									p.append("uname",this.adname);
+									p.append("upwd",this.adpwd);
 										axios.post(url,p).then(res=>{
 						      				alert(res.data);
 						      				if(res.data=="登陆成功"){
-												location.href="index.html";
+												location.href="后台管理/demo.html";
 											}
 						      			});
 										
