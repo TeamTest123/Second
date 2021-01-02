@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import com.yc.bean.Cart;
 import com.yc.bean.User;
+import com.yc.biz.AddCartBiz;
+import com.yc.biz.BizException;
 import com.yc.dao.CartDao;
 
 
@@ -23,6 +25,7 @@ import com.yc.dao.CartDao;
 public class AddCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CartDao dao=new CartDao();
+	private AddCartBiz cd=new AddCartBiz();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		Cart cart =new Cart();
@@ -36,6 +39,8 @@ public class AddCartServlet extends HttpServlet {
 			cart.setPid(Integer.valueOf(pid));
 			cart.setUid(uid);
 			cart.setNumber(Integer.valueOf(number));
+		  
+		   
 		    dao.insert(cart);
 		    response.getWriter().append("添加成功");
 		} catch (SQLException e) {

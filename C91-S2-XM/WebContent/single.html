@@ -275,24 +275,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			product:'',
 			list:'',
 			num:0,
+			cnt:0,
 		},
 		created(){
 			axios.get("singer.s?id="+location.hash.substring(1)).then(res=>{
 				console.log(res.data);
 				this.product=res.data;
-			})
+			});
+			axios.get("cart.s?op=getcnt&pid="+location.hash.substring(1)).then(res=>{
+				this.cnt=res.data;
+			
+			});
 		},
 		methods:{
 			add(){
-				var p=new URLSearchParams();
-				p.append("pid",this.product.pid);
-				p.append("number",1);
-				axios.post("add.s",p
-				).then(res=>{
-  					//res axios 封装的响应结果对象
-  					this.list=res.data;
-  					console.log(res.data);
-  				});
+				if(this.cnt>=1){
+					axios.get("cart.s?op=updatecart&pid="+location.hash.substring(1)).then(res=>{
+						alert(res.data);
+						location.href="checkout.html";
+					});
+				}else{
+					var p=new URLSearchParams();
+					p.append("pid",this.product.pid);
+					p.append("number",1);
+					axios.post("add.s",p
+					).then(res=>{
+	  					//res axios 封装的响应结果对象
+	  					this.list=res.data;
+	  					console.log(res.data);
+	  					alert(res.data);
+	  					location.href="checkout.html";
+	  				});
+				}
+				
 			}
 		}
 	})
