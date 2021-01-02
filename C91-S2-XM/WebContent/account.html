@@ -842,7 +842,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 </script> 
 					  
 				 </div>
+				 <div class="col-md-6 account-left second">
+					<form id="g">
+						<div class="account-top heading">
+							<h3>管理员登录</h3>
+						</div>
+						<div class="address1">
+							<span>管理员用户名</span>
+							<input v-model="adname" type="text1">
+						</div>
+						<div class="address1">
+							<span>密码</span>
+							<input v-model="adpwd" type="password1">
+						</div>
+						<div class="address1">
+							<a class="forgot" href="#">忘记密码?</a>
+							<input @click="login()" type="button1" value="登录">
+						</div>
 				<div class="clearfix"></div>
+				
+				      </form>
+				      
+					  </div>
+					  
+					  
+					 <script type="text/javascript">
+					 var v=new Vue({
+						 el:"#g",
+						 data : {
+							 adname:"",
+							 adpwd:""
+						 },
+							 methods:{
+								login(){
+									
+									var url="loginUser.s";
+									var p=new URLSearchParams();
+									p.append("adname",this.adname);
+									p.append("adpwd",this.adpwd);
+										axios.post(url,p).then(res=>{
+						      				alert(res.data);
+						      				if(res.data=="登陆成功"){
+												location.href="index.html";
+											}
+						      			});
+										
+									}
+							},
+						});
+						
+					 
+					 </script> 
+					  
+				 </div>
+				
 			</div>
 	  </div>
 	 
