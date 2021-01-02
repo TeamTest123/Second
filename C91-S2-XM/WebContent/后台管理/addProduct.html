@@ -24,11 +24,11 @@
 						<tbody><tr>
 							<td class="td_right">商品类型：</td>
 							<td>
-								<input type="text" v-model="product_type" name="title" class="input-text lh30" size="40" placeholder="请输入商品类型">
+								<input type="text" v-model="product_type" name="product_type" class="input-text lh30" size="40" placeholder="请输入商品类型">
 							</td>
 							<td class="td_right">商品名称：</td>
 							<td>
-								<input type="text" v-model="pname" name="title" class="input-text lh30" size="40" placeholder="请输入商品名称">
+								<input type="text" v-model="pname" name="pname" class="input-text lh30" size="40" placeholder="请输入商品名称">
 							</td>
 							<td class="td_right">商品数量：</td>
 							<td>
@@ -50,7 +50,7 @@
 							</td>
 							<td class="td_right">商品图片：</td>
 							<td>
-								<input type="file" v-model="image" name="image" class="input-text lh30" size="40" multiple="multiple">
+								<input type="file" v-model="image" name="img" class="input-text lh30" size="40" multiple="multiple">
 							</td>
 							<td></td>
 							<td></td>
@@ -80,7 +80,6 @@
 			</table>
 			
 	</form>
-	
 	<script type="text/javascript">
 	//添加商品
 		var v=new Vue({
@@ -96,22 +95,12 @@
 			},
 			methods : {
 				save(){
-					var p = new URLSearchParams();
-					p.append("product_type",this.product_type);
-					p.append("image",this.image);
-					p.append("pname",this.pname);
-					p.append("price",this.price);
-					p.append("color",this.color);
-					p.append("content",this.content);
-					p.append("number",this.number);
-					
-					
-					
+					var p=new FormData(yc_good_add);
 					axios.post("../productServlet.action", p).then(res=>{
 	  					//res axios 封装的响应结果对象
 	  					this.list=res.data;
 	  					console.log(res.data);
-	  					
+	  					alert(res.data);
 					});
 				}
 
