@@ -59,6 +59,12 @@ public class CartDao {
 		},uid);
 		return  list;
 	}
+
+	
+	public static Map<String, Object> findByUid(Cart t) {
+		
+		return null;
+	}
 	
 	
 	

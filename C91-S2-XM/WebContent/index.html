@@ -97,10 +97,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    		data : {
 	    			onlogin:false,
 	    			outlogin:true,
-	    			loginName : ''
+	    			user : ''
+	    			
 	    		},
 	    		mounted:function(){
 	    			//并发访问
+	    			axios.all[check(),getProduct()].then(
+	    				//用户是否登录判断   返回的结果中存储用户信息	user
+	    				if(fn1.data.user){
+	    					this.onlogin=true;
+	    					this.outlogin=false;
+	    					this.user=fn1.data.
+	    				}
+	    			)
+	    			
 	    		},
 	    		methods : {
 	    			
