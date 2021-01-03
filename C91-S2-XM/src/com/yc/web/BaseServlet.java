@@ -19,6 +19,7 @@ public class BaseServlet extends HttpServlet{
 
 
 	private static final long serialVersionUID = 1L;
+	private Gson gson=new Gson();
 
 	@Override
 	protected void doPost(HttpServletRequest request , HttpServletResponse response ) throws ServletException, IOException {
@@ -97,6 +98,11 @@ public class BaseServlet extends HttpServlet{
 		}
 		return t;
 		
+	}
+	
+	public void write(HttpServletResponse response, Object obj) throws IOException {
+		String json = gson.toJson(obj);
+		response.getWriter().append(json);
 	}
 
 }
