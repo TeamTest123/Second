@@ -21,7 +21,7 @@ public class UserServlet extends BaseServlet {
        
 	private LoginBiz lBiz=new LoginBiz();
 	
-	public void doGet(HttpServletRequest request,HttpServletResponse response)
+	public void doLogin(HttpServletRequest request,HttpServletResponse response)
 			throws IOException, ServletException{
 		response.setContentType("text/html;charset=utf-8");
 		
