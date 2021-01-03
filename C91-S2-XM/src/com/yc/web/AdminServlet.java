@@ -67,7 +67,24 @@ public class AdminServlet extends BaseServlet{
 		response.getWriter().append(""+uDao.selectCount());
 	}
 
-	
+    public void doLogin (HttpServletRequest request,HttpServletResponse response)
+			throws IOException{
+		response.setContentType("text/html;charset=utf-8");
+		
+		String adname=request.getParameter("adname");
+		String adpwd=request.getParameter("adpwd");
+		
+		try {
+			
+			Admin a=adm.AdminLogin(adname, adpwd);
+			response.getWriter().append("管理员登录成功");
+			request.getSession().setAttribute("admin", a);
+		} catch (BizException e) {
+			e.printStackTrace();
+			response.getWriter().append("登录失败了！！！ 原因:"+e.getMessage());
+		}
+		
+	}
 
     
     
