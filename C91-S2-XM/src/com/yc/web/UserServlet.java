@@ -1,16 +1,12 @@
 package com.yc.web;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.yc.bean.Cart;
 import com.yc.bean.User;
 import com.yc.biz.BizException;
-import com.yc.dao.CartDao;
 
 import yc.login.LoginBiz;
 
@@ -20,6 +16,11 @@ public class UserServlet extends BaseServlet88 {
 	private static final long serialVersionUID = 1L;
        
 	private LoginBiz lBiz=new LoginBiz();
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doLogin(request, response);
+	}
 	
 	public void doLogin(HttpServletRequest request,HttpServletResponse response)
 			throws IOException, ServletException{

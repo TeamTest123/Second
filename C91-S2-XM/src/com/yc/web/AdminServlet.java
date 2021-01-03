@@ -8,14 +8,16 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.yc.bean.User;
+import com.yc.biz.BizException;
 import com.yc.biz.UserBiz;
 import com.yc.dao.UserDao;
+
+import yc.login.LoginBiz;
 
 
 @WebServlet("/Manager.s")
@@ -24,6 +26,7 @@ public class AdminServlet extends BaseServlet88{
 	
     UserBiz uBiz=new UserBiz(); 
     private UserDao uDao =new UserDao();
+    LoginBiz lbiz=new LoginBiz();
 //    //删除管理员      管理员能不能删掉？待定
 //    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.setContentType("text/html;charset=utf-8");
@@ -33,6 +36,61 @@ public class AdminServlet extends BaseServlet88{
 //		response.getWriter().append("删除管理员成功");
 //	}
 //    
+    
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doLogin(request, response);
+	}
+	
+	
+	public void doLogin(HttpServletRequest request,HttpServletResponse response)
+			throws IOException, ServletException{
+		response.setContentType("text/html;charset=utf-8");
+		
+		String uname=request.getParameter("uname");
+		String upwd=request.getParameter("upwd");
+		String op=request.getParameter("op");
+		System.out.println(op);
+		if(op!=null && op.equals("doPost")) {
+			doCheck(request,response);
+			return ;
+		}
+		
+		try {
+			
+			User u=lbiz.AdminLogin(uname, upwd);
+			response.getWriter().append("管理员登录成功");
+			request.getSession().setAttribute("user", u);
+		} catch (BizException e) {
+			e.printStackTrace();
+			response.getWriter().append("管理员登录失败！！！ 原因:"+e.getMessage());
+		}
+		
+	}
+	
+	public void doCheck(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("docheck---------");
+		//从session会话中获取登陆的用户信息
+		User user=(User)request.getSession().getAttribute("user");
+		System.out.println(user+"cfnhh");
+//		Map<String, Object>map=null;
+//		if(null!=user) {
+//			Cart t=new Cart();
+//			t.setUid(user.getUid());
+//			map=CartDao.findByUid(t);
+//		}
+//		if(null==map) {
+//			map=new HashMap<String, Object>();
+//		}
+//		
+//		map.put("user", user);
+		printJSon(user, response);
+		
+	}
+    
+	
+    
+    
     //查看页数
     public void checkpage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("text/html;charset=utf-8");

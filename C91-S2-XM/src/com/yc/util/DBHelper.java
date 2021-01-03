@@ -13,8 +13,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
-import com.yc.bean.Category;
 import com.yc.bean.User;
 
 
