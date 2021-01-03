@@ -35,6 +35,7 @@ public class CartDao {
 				"	p.price,\n" +
 				"	c.number,\n" +
 				"	p.image,\n" +
+				"	p.pid,\n" +
 				"	uid\n" +
 				"FROM\n" +
 				"	cart c\n" +
@@ -53,6 +54,7 @@ public class CartDao {
 				c.setPrice(rs.getString("price"));
 				c.setNumber(rs.getInt("number"));
 				c.setImage(rs.getString("image"));
+				c.setPid(rs.getInt("pid"));
 				return c;
 			
 			}
@@ -93,5 +95,16 @@ public class CartDao {
 		dbh.update(sql, pid,uid);
 	}
 	
+	public void jian(int uid,int pid) throws SQLException {
+		String sql="UPDATE cart set number=number-1 where pid=? and uid=?";
+		DBHelper dbh=new DBHelper();
+		dbh.update(sql, pid,uid);
+	}
 	
+	public int delete(int uid,int pid) throws SQLException {
+		String sql="delete from cart where pid=? and uid=?";
+		DBHelper dbh=new DBHelper();
+		return dbh.update(sql, pid,uid);
+		 
+	}
 }
