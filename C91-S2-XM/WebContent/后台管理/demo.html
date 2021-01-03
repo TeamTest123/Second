@@ -28,13 +28,38 @@
 		$('#tt').tabs(
 				'add',
 				{
-					title : "商品信息管理",
+					title : "商品信息查询",
 					//子框架，用于在框架中打开另一个页面
 					content : "<iframe src='product.html' style='border:0px' "
 							+ "width='100%' height='100%'> </iframe>",
 					closable : true
 				});
 	}
+	
+	function openTab2() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "商品信息添加",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='addProduct.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	
+	function openTab4() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "管理管理员",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='admin.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	
 
 
 </script>
@@ -42,9 +67,7 @@
 <body>
 
 	<div id="cc" class="easyui-layout" data-options="fit:true">
-		<div
-			data-options="region:'north',title:'North Title',collapsible:false"
-			style="height: 100px;"></div>
+
 		<div
 			data-options="region:'south',title:'South Title',collapsible:false"
 			style="height: 100px;"></div>
@@ -84,17 +107,35 @@
 					data-options="
 					iconCls:'icon-search',
 					width:150,
-					onClick:openTab1 ">商品信息增加</a>
+					onClick:openTab2 ">商品信息增加</a>
 			
 						
 				</div>
-			<div title="订单">Content3</div>
+			<div title="管理员管理" data-options="iconCls:'icon-reload '"
+				style="
+				overflow: auto; 
+				padding: 10px;
+				text-align:center;
+				line-height:40px ">
+				<a id="btn" href="#" class="easyui-linkbutton"
+					data-options="
+					iconCls:'icon-search',
+					width:150,
+					onClick:openTab4 ">管理员信息</a>
+
+			</div>
+			
+			<div title="订单管理">订单详情</div>
         	</div>
         		<div id="tt" data-options="region:'center' " class="easyui-tabs"
 			style="padding: 5px; background: #eee;"></div>
         		<div id="tt" data-options="region:'center' " class="easyui-tabs1"
 			style="padding: 5px; background: #eee;"></div>
-
+				<div id="tt" data-options="region:'center' " class="easyui-tabs2"
+			style="padding: 5px; background: #eee;"></div>
+				<div id="tt" data-options="region:'center' " class="easyui-tabs4"
+			style="padding: 5px; background: #eee;"></div>
+				
 
 
 </div>

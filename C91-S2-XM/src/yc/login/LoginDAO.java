@@ -18,7 +18,7 @@ public class LoginDAO {
 			public User map(ResultSet rs) throws SQLException {
 				User u=new User();
 				u.setUname(rs.getString("uname"));
-				
+				u.setUid(rs.getInt("uid"));
 				u.setUpwd(rs.getString("upwd"));
 				
 				return u;

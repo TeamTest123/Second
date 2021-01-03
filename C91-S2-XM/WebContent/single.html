@@ -77,91 +77,139 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- header -->
-	<div class="header_bg">
-		<div class="container">
-			<div class="header">
-				<div class="head-t">
-					<div class="logo">
-						<a href="index.html"><h1>
-								购物 <span>商城</span>
-							</h1> </a>
+<div class="header_bg">
+   <div class="container">
+	<div class="header">
+	  <div class="head-t">
+		 <div class="logo">
+			  <a href="index.html"><h1>购物 <span>商城</span></h1> </a>
+		  </div>
+		  <div class="header_right">
+			<div class="cart box_1" id='app3'>
+				<a href="checkout.html">
+				<div class="total" >
+					<span >
+					</span> 我的购物车</div>
+					<i class="glyphicon glyphicon-购物-cart"></i></a>
+					<div class="login_info fl" v-if="onlogin">
+						欢迎：<em>{{uname}}</em>
 					</div>
-					<div class="header_right">
-						<div class="cart box_1">
-							<a href="checkout.html">
-								<div class="total">
-									<span class="simpleCart_total"></span>
-									
-								</div> <i class="glyphicon glyphicon-shopping-cart"></i>
-							</a>
-							<p>
-								<a href="javascript:;" class="simpleCart_empty">清空购物车</a>
-							</p>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<!--start-header-menu-->
-			<ul class="megamenu skyblue" id='app1'>
-				<li class="active grid"><a class="color1" href="index.html">首页</a></li>
-				<li class="grid"><span v-for="c in list"> <a
-						class="color2" href="#">{{c.bname}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				</span>
-					<div class="megapanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">
-
-									<ul>
-										<li><a href="product.html"></a></li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-
-						<div class="row">
-							<div class="col2"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-						</div>
-					</div></li>
-
-				<li><a class="color9" href="#">手表</a>
-					<div class="megapanel">
-						<div class="row">
-							<div class="col1">
-								<div class="h_nav">
-
-									<ul>
-										<li><a href="product.html">新品抢先看</a></li>
-										<li><a href="product.html">men</a></li>
-										<li><a href="product.html">women</a></li>
-										<li><a href="product.html">配件</a></li>
-										<li><a href="product.html">童装</a></li>
-										<li><a href="product.html">品牌</a></li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col2"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-							<div class="col1"></div>
-						</div>
-					</div></li>
-			</ul>
+					<div class="login_btn fl">
+						<a href="account.html" v-if="outlogin">登录</a>
+						<span> | </span>
+						<a href="contact.html" >用户中心</a>
+						<span> | </span>
+						<a href="javascript:void(0)" v-if="onlogin">退出</a>
+						
+					 </div>	
+				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
+				<div class="clearfix" > </div>
+			</div>		
+				 
 		</div>
+		<div class="clearfix"></div>	
+	    </div>
+	    
+	    <script type="text/javascript">
+	     	var user=new Vue({
+	    		el : '#app3',
+	    		data : {
+	    			onlogin:false,
+	    			outlogin:true,
+	    			uname : ''
+	    			
+	    		},
+	    		mounted:function(){
+	    			console.info('----------');
+	    			//并发访问
+	    			axios.all([check()]).then(
+	    				axios.spread((fn1)=>{
+	    				//用户是否登录判断   返回的结果中存储用户信息	user
+	    				if(fn1.data){
+	    					this.onlogin=true;
+	    					this.outlogin=false;
+	    					this.uname=fn1.data.uname;
+	    					console.info(this.uname);
+	    				}else{
+	    					//未登录
+	    					this.onlogin=false;
+	    					this.outlogin=true;
+	    				}
+	    				})
+	    			
+	    			)
+	    			},
+	    	});
+	    
+	    	//检查用户是否登录
+	    	function check(){
+	    		return axios.get("loginUser.s?op=doPost");
+	    	} 
+	    </script>
+		<!--start-header-menu-->
+		
+		<!-- 商品展示- -->
+		
+		<ul  class="megamenu skyblue" id='app1'>
+			<li class="active grid"><a class="color1" href="index.html">首页</a></li>
+			<li class="grid">
+				<span v-for="c in list">
+				<a class="color9" href="#">{{c.bname}}</a>&nbsp;&nbsp;&nbsp;&nbsp;<span> | </span>
+				</span>
+				<div class="megapanel">
+					<div class="row">
+						<div class="col1">
+							<div  class="h_nav">
+								
+								<ul>
+									<li ><a href="product.html"></a></li>
+								</ul>	
+							</div>							
+						</div>
+					
+				</div>
+		
+  
+  
+  
+ 
+				
+    				</div>
+				</li>
+	
+				<li><a class="color9" href="#">      </a>
+				<div class="megapanel">
+					<div class="row">
+						<div class="col1">
+							<div class="h_nav">
+								
+								<ul>
+									<li><a href="product.html">新品抢先看</a></li>
+									<li><a href="product.html">men</a></li>
+									<li><a href="product.html">women</a></li>
+									<li><a href="product.html">配件</a></li>
+									<li><a href="product.html">童装</a></li>
+									<li><a href="product.html">品牌</a></li>
+								</ul>	
+							</div>							
+						</div>
+						
+					</div>
+					<div class="row">
+						<div class="col2"></div>
+						<div class="col1"></div>
+						<div class="col1"></div>
+						<div class="col1"></div>
+						<div class="col1"></div>
+					</div>
+    				</div>
+				</li>
+		 </ul> 
 	</div>
+</div>
+</div>
 
-	<script type="text/javascript">
+<script type="text/javascript">
   		 var v=new Vue({
   			el:"#app1",
   			data:{
@@ -221,7 +269,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="clearfix"></div>
 							<div class="single-but item_add">
-								<input type="submit" value="加入购物车" />
+								<input @click="add" type="submit" value="加入购物车" />
 							</div>
 						</div>
 					</div>
@@ -272,13 +320,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	var v=new Vue({
 		el:"#intro",
 		data:{
-			product:''
+			product:'',
+			list:'',
+			num:0,
+			cnt:0,
 		},
 		created(){
 			axios.get("singer.s?id="+location.hash.substring(1)).then(res=>{
 				console.log(res.data);
 				this.product=res.data;
-			})
+			});
+			axios.get("cart.s?op=getcnt&pid="+location.hash.substring(1)).then(res=>{
+				this.cnt=res.data;
+			
+			});
+		},
+		methods:{
+			add(){
+				if(this.cnt>=1){
+					axios.get("cart.s?op=updatecart&pid="+location.hash.substring(1)).then(res=>{
+						alert(res.data);
+						location.href="checkout.html";
+					});
+				}else{
+					var p=new URLSearchParams();
+					p.append("pid",this.product.pid);
+					p.append("number",1);
+					axios.post("add.s",p
+					).then(res=>{
+	  					//res axios 封装的响应结果对象
+	  					this.list=res.data;
+	  					console.log(res.data);
+	  					alert(res.data);
+	  					location.href="checkout.html";
+	  				});
+				}
+				
+			}
 		}
 	})
 	</script>

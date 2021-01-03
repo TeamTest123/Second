@@ -10,7 +10,6 @@ public class Product implements java.io.Serializable{
 	private Integer pid;
 	private String product_type;
 	private String image;
-	private String email;
 	private String pname;
 	private String price;
 	private String color;
@@ -18,7 +17,7 @@ public class Product implements java.io.Serializable{
 	private Integer number;
 	@Override
 	public String toString() {
-		return "product [pid=" + pid + ", product_type=" + product_type + ", image=" + image + ", email=" + email
+		return "product [pid=" + pid + ", product_type=" + product_type + ", image=" + image 
 				+ ", pname=" + pname + ", price=" + price + ", color=" + color + ", content=" + content + ", number="
 				+ number + "]";
 	}
@@ -40,12 +39,7 @@ public class Product implements java.io.Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+
 	public String getPname() {
 		return pname;
 	}

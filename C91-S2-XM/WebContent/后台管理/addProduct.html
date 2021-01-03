@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>添加商品</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
 <link rel="stylesheet" type="text/css"
 	href="../easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
@@ -10,14 +13,106 @@
 <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript"
 	src="../easyui/locale/easyui-lang-zh_CN.js"></script>
-
-
-
-
-
+	<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
 
 </head>
 <body>
+<div class="yc_good_add">
+
+	<form id="yc_good_add" method="post" enctype="multipart/from-data">
+		<table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tbody><tr>
+							<td class="td_right">商品类型：</td>
+							<td>
+								<input type="text" v-model="product_type" name="product_type" class="input-text lh30" size="40" placeholder="请输入商品类型">
+							</td>
+							<td class="td_right">商品名称：</td>
+							<td>
+								<input type="text" v-model="pname" name="pname" class="input-text lh30" size="40" placeholder="请输入商品名称">
+							</td>
+							<td class="td_right">商品数量：</td>
+							<td>
+								<input type="number" v-model="number" name="number" class="input-text lh30" size="40" placeholder="商品数量">
+							</td>
+						</tr>
+						<tr>
+							<td class="td_right">商品颜色：</td>
+							<td>
+								<input type="text" v-model="color" name="color" class="input-text lh30" size="40" placeholder="颜色">
+							</td>
+							
+							
+						</tr>
+						<tr>
+							<td class="td_right">商品价格：</td>
+							<td>
+								<input type="text" v-model="price" name="price" class="input-text lh30" size="40" placeholder="单价">
+							</td>
+							<td class="td_right">商品图片：</td>
+							<td>
+								<input type="file" v-model="image" name="img" class="input-text lh30" size="40" multiple="multiple">
+							</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td colspan="5" align="center">
+								<div id="showImages">
+								
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_right">商品详情介绍：</td>
+							<td colspan="5">
+								 <textarea name="content" v-model="content" rows="10" cols="80"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" align="center">
+								<input type="button" name="button" class="btn btn82 btn_save2" @click="save()" value="添加">
+								<input type="reset" name="button" class="btn btn82 btn_res" value="重置">
+							</td>
+						</tr>
+					</tbody>
+					
+			</table>
+			
+	</form>
+	<script type="text/javascript">
+	//添加商品
+		var v=new Vue({
+			el : "form",
+			data : {
+				product_type:"",
+				image:"",
+				pname:"",
+				price:"",
+				color:"",
+				content:"",
+				number:""
+			},
+			methods : {
+				save(){
+					var p=new FormData(yc_good_add);
+					axios.post("../productServlet.action", p).then(res=>{
+	  					//res axios 封装的响应结果对象
+	  					this.list=res.data;
+	  					console.log(res.data);
+	  					alert(res.data);
+					});
+				}
+
+			
+			}
+		});
+	
+	
+	
+	
+	</script>
+	</div>
 
 </body>
 </html>

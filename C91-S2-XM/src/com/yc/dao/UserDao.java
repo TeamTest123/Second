@@ -12,13 +12,13 @@ public class UserDao {
 	private UserMapper userMapper=new UserMapper();
 
 	/*
-	 * 分页查询
+	 * 分页查询用户
 	 */
 	public List<User> selectPage(int page) {
 		// 计算开始页数
 		int begin =(page-1)*10;
 		// mysql分页查询语法:limit从第几行开始，查几行数据
-		String sql = "select * from user limit ?,10";
+		String sql = "select * from user where status=1 limit ?,10";
 
 		try {
 			return DBHelper.selectList(sql, userMapper, begin);
@@ -29,11 +29,11 @@ public class UserDao {
 	}
 	
 	/**
-	 * 获取总记录数
+	 * 用户获取总记录数
 	 * @throws SQLException 
 	 */
 	public int selectCount() {
-		String sql ="select count(*) cnt from user";
+		String sql ="select count(*) cnt from user where status=1";
 		
 			try {
 				List<Integer> list =DBHelper.selectList(sql,new ResultSetMapper<Integer>() {
@@ -56,8 +56,10 @@ public class UserDao {
 		String sql="delete from user where uid=?";
 		dbh.update(sql,uid);
 	}
+
 	
 	
+	//增加用户
 	public void insert(User user) throws SQLException {
 
 		String sql="insert into user values(null,?,?,?,?,?,?)";
@@ -98,5 +100,43 @@ public class UserDao {
 		}
 		
 	}
+	
+	/*
+	 * 管理员分页查询
+	 */
+	public List<User> selectPageadmin(int page) {
+		// 计算开始页数
+		int begin =(page-1)*10;
+		// mysql分页查询语法:limit从第几行开始，查几行数据
+		String sql = "select * from user where status=2 limit ?,10";
+
+		try {
+			return DBHelper.selectList(sql, userMapper, begin);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	/**
+	 * 管理员获取总记录数
+	 * @throws SQLException 
+	 */
+	public int selectCountadmin() {
+		String sql ="select count(*) cnt from user where status=2";
+		
+			try {
+				List<Integer> list =DBHelper.selectList(sql,new ResultSetMapper<Integer>() {
+					public Integer map(ResultSet rs) throws SQLException {
+						return rs.getInt("cnt");
+					}
+		});
+			return list.get(0);	
+	}catch(SQLException e) {
+		throw new RuntimeException(e);
+	}
+				
+	}
+	
 
 }

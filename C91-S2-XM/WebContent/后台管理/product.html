@@ -25,7 +25,7 @@ function del(index){
 			//发起Ajax删除数据的记录
 			//调用ajax请求方法删除歌手信息
 			//JQuery的post方法3个参数url，params,回调函数
-			var url="../deleteProduct.s";
+			var url="../DeleteProduct.s";
 			var params={pid:pid};
 			
 			function callback(data){ //data:Servlet返回的数据
@@ -49,7 +49,7 @@ function del(index){
 			
 			function save(){
 				$('#ff').form('submit',{
-					url:"../CreateProduct.s",
+					url:"../productServlet.action",
 					success:function(data){
 						$("#table").datagrid('reload');
 						$.messager.show({
@@ -108,13 +108,13 @@ function del(index){
 		closed:true">
 		
 	<form  style="text-align: center;" id="ff">
-		<input id="tb" name="product_type" class="easyui-textbox" prompt="商品类型"><br>
-		<input id="tb" name="image" class="easyui-textbox" prompt="图片"><br>
-		<input id="tb"  name="pname" class="easyui-textbox" prompt="名称"><br>
-		<input id="tb"  name="price" class="easyui-textbox" prompt="价格"><br>
-		<input id="tb" name="color" class="easyui-textbox" prompt="颜色"><br>
-		<input id="tb"  name="content" class="easyui-textbox" prompt="商品详情"><br>
-		<input id="tb"  name="number" class="easyui-textbox" prompt="商品数量"><br>
+		<input id="tb1" name="product_type" class="easyui-textbox" prompt="商品类型"><br>
+		<input id="tb2" name="image" class="easyui-textbox" prompt="图片"><br>
+		<input id="tb3"  name="pname" class="easyui-textbox" prompt="名称"><br>
+		<input id="tb4"  name="price" class="easyui-textbox" prompt="价格"><br>
+		<input id="tb5" name="color" class="easyui-textbox" prompt="颜色"><br>
+		<input id="tb6"  name="content" class="easyui-textbox" prompt="商品详情"><br>
+		<input id="tb7"  name="number" class="easyui-textbox" prompt="商品数量"><br>
 		
 			 <a id="btn" href="#"
 				class="easyui-linkbutton" data-options="iconCls:'icon-save',

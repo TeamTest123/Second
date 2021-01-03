@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-            
-    
-    <wb-module deploy-name="C91-S2-XM">
-                        
         
+    <wb-module deploy-name="C91-S2-XM">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-                        
-        
-        <property name="context-root" value="C91-S2-XM"/>
                 
+        <property name="context-root" value="C91-S2-XM"/>
         <property name="java-output-path" value="/C91-S2-XM/bin"/>
-                    
-    
+            
     </wb-module>
-        
-
+    
 </project-modules>

@@ -3,7 +3,7 @@ package com.yc.bean;
 public class Category implements java.io.Serializable{
 
 	/**
-	 * 
+	 * 商品分类
 	 */
 	private static final long serialVersionUID = 1L;
 

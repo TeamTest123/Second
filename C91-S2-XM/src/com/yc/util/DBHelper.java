@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import com.yc.bean.Admin;
+import com.yc.bean.Category;
 import com.yc.bean.User;
 
 
@@ -87,24 +87,9 @@ public class DBHelper {
 					}
 
 				});
-		List<Admin> list2 =selectList("select * from admin where aid<30",
-				new ResultSetMapper<Admin>() {
-			
-					public Admin map(ResultSet rs) throws SQLException{
-						Admin vv=new Admin();
-						vv.setAid(rs.getInt("aid"));
-						vv.setAdname(rs.getString("adname"));
-							
-							return vv;
-					}
-
-				});
 				System.out.println(list1.size());
-				System.out.println(list2.size());
 				System.out.println(list1);
 	}
-	
-	
 	
 	//修改参数
 	
@@ -252,6 +237,7 @@ public static ResultSet executeQuery(String sql,Object[] params){
 			}
 		return rs;
 		}
+
 
 
 		

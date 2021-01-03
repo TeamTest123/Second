@@ -10,7 +10,7 @@ import com.yc.util.DBHelper.ResultSetMapper;
 public class ProductDao {
 
 	public List<Product>selectIndexYs() throws SQLException {
-		String sql="select * from product limit 0,16";
+		String sql="select * from product limit 0,8";
 		List<Product>list;
 		list=DBHelper.selectList(sql, new ResultSetMapper<Product>() {
 

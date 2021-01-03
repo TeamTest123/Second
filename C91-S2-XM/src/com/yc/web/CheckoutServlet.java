@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.yc.bean.Cart;
+import com.yc.bean.User;
 import com.yc.dao.CartDao;
 
 
@@ -22,9 +24,13 @@ public class CheckoutServlet extends HttpServlet {
     private CartDao dao=new CartDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
+		Cart cart =new Cart();
+		HttpSession session = request.getSession();
+		User u=(User) request.getSession().getAttribute("user");
+		Integer uid=u.getUid();
 		List<Cart> list=null;
 		try {
-			list=dao.selectAllCart();
+			list=dao.selectAllCart(uid);
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
