@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +18,7 @@ import com.yc.dao.UserDao;
 
 
 @WebServlet("/Manager.s")
-public class AdminServlet extends BaseServlet {
+public class AdminServlet extends BaseServlet{
 	private static final long serialVersionUID = 1L;
 	
     UserBiz uBiz=new UserBiz(); 
