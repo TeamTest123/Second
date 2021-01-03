@@ -13,6 +13,32 @@ body a {
 a:hover{
  text-decoration:none;
 }
+
+#toTop {
+	display: none;
+	text-decoration: none;
+	position: fixed;
+	bottom: 55px;
+	right: 2%;
+	overflow: hidden;
+	z-index: 999; 
+	width: 32px;
+	height: 32px;
+	border: none;
+	text-indent: 100%;
+	background: url(images/up_arrow.png) no-repeat 0px 0px;
+}
+#toTopHover {
+	width: 32px;
+	height: 32px;
+	display: block;
+	overflow: hidden;
+	float: right;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter: alpha(opacity=0);
+}
+
 input[type="button"],input[type="submit"],li.parallelogram{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
