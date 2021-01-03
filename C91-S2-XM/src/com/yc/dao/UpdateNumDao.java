@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import com.yc.util.DBHelper;
 
-public class UpdateNum {
+public class UpdateNumDao {
 
 	public void updateproduct(int pid) throws SQLException {
 		String sql="update product set number=number-1 where pid=?";

@@ -309,10 +309,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		},
 		methods:{
 			add(){
+				//判断商品用户购物车商品数是否大于0
 				if(this.cnt>=1){
 					axios.get("cart.s?op=updatecart&pid="+location.hash.substring(1)).then(res=>{
 						alert(res.data);
 						location.href="checkout.html";
+					});
+					//添加购物车成功后商品数减一
+					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+						
 					});
 				}else{
 					var p=new URLSearchParams();
@@ -326,6 +331,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  					alert(res.data);
 	  					location.href="checkout.html";
 	  				});
+					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+						
+					});
 				}
 				
 			}
