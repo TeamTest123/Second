@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.yc.bean.Admin;
-import com.yc.bean.User;
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
 

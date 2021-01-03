@@ -15,7 +15,7 @@ import com.yc.biz.UpdateCartBiz;
 import com.yc.dao.CartDao;
 
 @WebServlet("/cart.s")
-public class Updatecart extends BaseServlet {
+public class Updatecart extends BaseServlet88 {
 
 	/**
 	 * 

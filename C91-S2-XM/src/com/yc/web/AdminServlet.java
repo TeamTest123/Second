@@ -5,25 +5,24 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.google.gson.Gson;
-import com.yc.bean.Admin;
 import com.yc.bean.User;
-import com.yc.biz.BizException;
 import com.yc.biz.UserBiz;
 import com.yc.dao.UserDao;
-import yc.login.LoginBiz;
 
 
 @WebServlet("/Manager.s")
-public class AdminServlet extends BaseServlet{
+public class AdminServlet extends BaseServlet88{
 	private static final long serialVersionUID = 1L;
 	
     UserBiz uBiz=new UserBiz(); 
-    private LoginBiz adm=new LoginBiz();
     private UserDao uDao =new UserDao();
 //    //删除管理员      管理员能不能删掉？待定
 //    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -67,26 +66,7 @@ public class AdminServlet extends BaseServlet{
 		response.getWriter().append(""+uDao.selectCount());
 	}
 
-    public void doLogin (HttpServletRequest request,HttpServletResponse response)
-			throws IOException{
-		response.setContentType("text/html;charset=utf-8");
-		
-		String adname=request.getParameter("adname");
-		String adpwd=request.getParameter("adpwd");
-		
-		try {
-			
-			Admin a=adm.AdminLogin(adname, adpwd);
-			response.getWriter().append("管理员登录成功");
-			request.getSession().setAttribute("admin", a);
-		} catch (BizException e) {
-			e.printStackTrace();
-			response.getWriter().append("登录失败了！！！ 原因:"+e.getMessage());
-		}
-		
-	}
+	
 
-    
     
 }
-

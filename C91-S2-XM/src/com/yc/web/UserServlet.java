@@ -16,7 +16,7 @@ import yc.login.LoginBiz;
 
 
 @WebServlet("/loginUser.s")
-public class UserServlet extends BaseServlet {
+public class UserServlet extends BaseServlet88 {
 	private static final long serialVersionUID = 1L;
        
 	private LoginBiz lBiz=new LoginBiz();
