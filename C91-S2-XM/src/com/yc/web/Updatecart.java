@@ -25,6 +25,7 @@ public class Updatecart extends BaseServlet {
 	public  void updatecart(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		User u=(User) request.getSession().getAttribute("user");
 		Integer uid=u.getUid();
+		
 		int pid=Integer.parseInt(request.getParameter("pid"));
 				
 			try {
@@ -33,6 +34,7 @@ public class Updatecart extends BaseServlet {
 			} catch (BizException e) {
 				write(response, "添加失败 原因："+e.getMessage());
 			}
+		
 	}
 	
 
