@@ -218,13 +218,14 @@ body{
 						</div>
 						<div class="address">
 							<span>管理员用户名</span>
-							<input v-model="adname" type="text">
+							<input v-model="uname" type="text">
 						</div>
 						<div class="address">
 							<span>密码</span>
-							<input v-model="adpwd" type="password">
+							<input v-model="upwd" type="password">
 						</div>
-						<div class="address">
+						<div class="address1">
+							<a class="forgot" href="#">忘记密码?</a>
 							<input @click="login()" type="button" value="登录">
 						</div>
 				<div class="clearfix"></div>
@@ -238,20 +239,20 @@ body{
 					 var v=new Vue({
 						 el:"#g",
 						 data : {
-							 adname:"",
-							 adpwd:""
+							 uname:"",
+							 upwd:""
 						 },
 							 methods:{
 								login(){
 									
 									var url="Manager.s?op=doLogin";
 									var p=new URLSearchParams();
-									p.append("adname",this.adname);
-									p.append("adpwd",this.adpwd);
+									p.append("uname",this.uname);
+									p.append("upwd",this.upwd);
 										axios.post(url,p).then(res=>{
 						      				alert(res.data);
-						      				if(res.data=="管理员登陆成功"){
-												location.href="demo.html";
+						      				if(res.data=="管理员登录成功"){
+												location.href="后台管理/demo.html";
 											}
 						      			});
 										
