@@ -37,6 +37,9 @@ label{
 /*--start-header--*/
 
 /*-- header --*/
+.col-md-6{
+	float:left;
+}
 .top_bg{
 	background: #252525;
 }

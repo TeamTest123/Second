@@ -39,7 +39,12 @@ public class AdminServlet extends BaseServlet88{
     
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doLogin(request, response);
+		String op=request.getParameter("op");
+		if("doLogin".equals(op)) {
+			doLogin(request, response);
+		}else if("checkpage".equals(op)) {
+			checkpage(request,response);
+		}
 	}
 	
 	

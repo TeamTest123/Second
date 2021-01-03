@@ -5,10 +5,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.yc.bean.Category;
+import com.yc.bean.User;
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
 
 public class CategoryDao {
+	private CategoryMapper  cMapper=new CategoryMapper();
+	
 	//查询是否有重名分类
 	public int countByName(String bname) throws SQLException {
 		String sql="select count(*) from category where bname=?";
@@ -19,7 +22,7 @@ public class CategoryDao {
 		}, bname);
 		return list.get(0);
 	}
-
+	
 	/**
 	 * 获取总分类数
 	 * @throws SQLException 
