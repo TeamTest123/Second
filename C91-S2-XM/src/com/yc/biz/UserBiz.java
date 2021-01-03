@@ -1,14 +1,18 @@
 package com.yc.biz;
 
 import java.sql.SQLException;
+
+import com.yc.bean.Admin;
 import com.yc.bean.User;
 import com.yc.dao.UserDao;
+import yc.login.AdminDao;
 
 
 public class UserBiz {
 	
 
 	private UserDao udao=new UserDao();
+	private AdminDao admindao=new AdminDao();
 	public void register(User user) throws BizException {
 		//业务判断：同名判断，非空判断
 		if(user.getUname()==null||user.getUname().isEmpty()) {
@@ -76,5 +80,7 @@ public class UserBiz {
 		
 	}
 
+	
+	
 	
 }
