@@ -67,9 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <div class="header_right">
 			<div class="cart box_1" id='app3'>
 				<a href="checkout.html">
-				<div class="total" >
-					<span >
-					</span> 我的购物车</div>
+				
 					<i class="glyphicon glyphicon-购物-cart"></i></a>
 					<div class="login_info fl" v-if="onlogin">
 						欢迎：<em>{{uname}}</em>
@@ -77,10 +75,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="login_btn fl">
 						<a href="account.html" v-if="outlogin">登录</a>
 						<span> | </span>
-						<a href="contact.html" >用户中心</a>
+						<a href="account.html" v-if="onlogin">退出</a>
 						<span> | </span>
-						<a href="javascript:void(0)" v-if="onlogin" href="account.html">退出</a>
-						
 					 </div>	
 				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
 				<div class="clearfix" > </div>
@@ -100,7 +96,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    			
 	    		},
 	    		mounted:function(){
-	    			console.info('----------');
 	    			//并发访问
 	    			axios.all([check()]).then(
 	    				axios.spread((fn1)=>{
@@ -157,33 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     				</div>
 				</li>
 	
-				<li><a class="color9" href="#">      </a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								
-								<ul>
-									<li><a href="product.html">新品抢先看</a></li>
-									<li><a href="product.html">men</a></li>
-									<li><a href="product.html">women</a></li>
-									<li><a href="product.html">配件</a></li>
-									<li><a href="product.html">童装</a></li>
-									<li><a href="product.html">品牌</a></li>
-								</ul>	
-							</div>							
-						</div>
-						
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
+			
 		 </ul> 
 	</div>
 </div>
@@ -240,7 +209,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			</div>
 				<span>
-				<button>提交订单</button></span>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button>提交订单</button></span>
 		 </div>
 		
 		 <script type="text/javascript">
