@@ -1,8 +1,13 @@
 package com.yc.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+import java.util.Map;
 
 import com.yc.bean.Category;
 import com.yc.util.DBHelper;
@@ -51,6 +56,11 @@ public class CategoryDao {
 //	
 //	}
 	
+	public List<Map<String,Object>> querycnt() throws SQLException {
+		String sql="select * from category";
+		DBHelper dbh=new DBHelper();
+		return dbh.selectListMap(sql);
+	}
 	
 	
 	class CategoryMapper  implements ResultSetMapper<Category>{

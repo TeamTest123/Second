@@ -55,6 +55,29 @@ public class ProductDao {
 		return  list.get(0);
 		}
 	
+	public List<Product> selectByType(String product_type) throws SQLException {
+		String sql="select * from product where product_type=?";
+		List<Product>list;
+		list=DBHelper.selectList(sql, new ResultSetMapper<Product>() {
+
+			@Override
+			public Product map(ResultSet rs) throws SQLException {
+				Product dm=new Product();
+				dm.setPid(rs.getInt("pid"));
+				dm.setProduct_type(rs.getString("product_type"));
+				dm.setImage(rs.getString("image"));
+				dm.setPname(rs.getString("pname"));
+				dm.setPrice(rs.getString("price"));
+				dm.setColor(rs.getString("color"));
+				dm.setContent(rs.getString("content"));
+				dm.setNumber(rs.getInt("number"));
+				
+				return dm;
+			}
+		},product_type);
+		return  list;
+		}
+	
 	/**
 	 * 后台分页查询
 	 * @return

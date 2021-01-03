@@ -36,6 +36,7 @@ public class IndexServlet extends HttpServlet {
 		//解决乱码问题
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().append(json);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

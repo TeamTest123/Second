@@ -2,9 +2,68 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>简单通用文章系统后台管理模板</title>
+    <title> 后台管理</title>
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css"
+	href="../easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript">
+	function openTab(){
+		$('#tt').tabs(
+				'add',
+				{
+					title : "用户信息管理",
+					//href : 'Singer.html',//href引入子页面存在Bug，设计有缺陷
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='User.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	function openTab1() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "商品信息查询",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='product.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	
+	function openTab2() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "商品信息添加",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='addProduct.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	
+	function openTab4() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "管理管理员",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='admin.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	
+
+
+</script>
 </head>
 <body>
 <div class="topbar-wrap white">
