@@ -2,9 +2,13 @@ package com.yc.web;
 
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.SQLException;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,8 +27,14 @@ public class Updatecart extends BaseServlet88 {
 	private static final long serialVersionUID = 1L;
 
 	private UpdateCartBiz ucd=new UpdateCartBiz();
+	
+	
+	
+	
+	
 	public  void updatecart(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		User u=(User) request.getSession().getAttribute("user");
+		System.out.println(u+"yonghua");
 		Integer uid=u.getUid();
 		
 		int pid=Integer.parseInt(request.getParameter("pid"));
