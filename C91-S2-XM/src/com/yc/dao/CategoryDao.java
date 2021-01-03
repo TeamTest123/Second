@@ -1,19 +1,15 @@
 package com.yc.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.Map;
-
 import com.yc.bean.Category;
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
 
 public class CategoryDao {
+
 	//查询是否有重名分类
 	public int countByName(String bname) throws SQLException {
 		String sql="select count(*) from category where bname=?";
@@ -24,7 +20,7 @@ public class CategoryDao {
 		}, bname);
 		return list.get(0);
 	}
-
+	
 	/**
 	 * 获取总分类数
 	 * @throws SQLException 
@@ -45,16 +41,27 @@ public class CategoryDao {
 				
 	}
 	
-//	//查看所有分类
-//	public List<Category> findall(){
-//		String sql="select sid,bname,fid from category";
-//
-//		return DBHelper.findMutipl(sql, null,Category.class);
-//	
-//	
-//	
-//	
-//	}
+	//查看所有分类
+	public List<Category> findall() throws SQLException{
+		String sql="select *  from category";
+
+		return DBHelper.selectList(sql, new ResultSetMapper<Category>() {
+			
+			public Category map(ResultSet rs) throws SQLException {
+				Category c=new Category();
+				c.setSid(rs.getInt("sid"));
+				c.setBname(rs.getString("bname"));
+				c.setFid(rs.getInt("fid"));
+				return c;
+			}
+			
+			
+		});
+	
+	
+	
+	
+	}
 	
 	public List<Map<String,Object>> querycnt() throws SQLException {
 		String sql="select * from category";

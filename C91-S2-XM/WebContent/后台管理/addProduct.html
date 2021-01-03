@@ -24,7 +24,10 @@
 						<tbody><tr>
 							<td class="td_right">商品类型：</td>
 							<td>
-								<input type="text" v-model="product_type" name="product_type" class="input-text lh30" size="40" placeholder="请输入商品类型">
+									<select class="easyui-combobox select" style="width:100px" 
+										data-options="valueField:'sid',textField:'bname',
+										url:'../goodtype.action?op=findAll'" name="sid" id="Category">
+									</select>
 							</td>
 							<td class="td_right">商品名称：</td>
 							<td>

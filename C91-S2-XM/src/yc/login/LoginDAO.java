@@ -10,7 +10,7 @@ import com.yc.util.DBHelper.ResultSetMapper;
 
 public class LoginDAO {
 	public List<User> Login(String uname,String upwd) throws SQLException{
-		String sql="select * from user where uname=? and upwd=? ";
+		String sql="select * from user where uname=? and upwd=? and status=1 ";
 		
 		return DBHelper.selectList(sql, new ResultSetMapper<User>() {
 

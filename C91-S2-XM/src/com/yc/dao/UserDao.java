@@ -101,42 +101,5 @@ public class UserDao {
 		
 	}
 	
-	/*
-	 * 管理员分页查询
-	 */
-	public List<User> selectPageadmin(int page) {
-		// 计算开始页数
-		int begin =(page-1)*10;
-		// mysql分页查询语法:limit从第几行开始，查几行数据
-		String sql = "select * from user where status=2 limit ?,10";
-
-		try {
-			return DBHelper.selectList(sql, userMapper, begin);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-		
-	}
 	
-	/**
-	 * 管理员获取总记录数
-	 * @throws SQLException 
-	 */
-	public int selectCountadmin() {
-		String sql ="select count(*) cnt from user where status=2";
-		
-			try {
-				List<Integer> list =DBHelper.selectList(sql,new ResultSetMapper<Integer>() {
-					public Integer map(ResultSet rs) throws SQLException {
-						return rs.getInt("cnt");
-					}
-		});
-			return list.get(0);	
-	}catch(SQLException e) {
-		throw new RuntimeException(e);
-	}
-				
-	}
-	
-
 }

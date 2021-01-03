@@ -97,10 +97,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="login_btn fl">
 						<a href="account.html" v-if="outlogin">登录</a>
 						<span> | </span>
-						<a href="contact.html" >用户中心</a>
+						<a href="account.html" v-if="onlogin">退出</a>
 						<span> | </span>
-						<a href="javascript:void(0)" v-if="onlogin">退出</a>
-						
 					 </div>	
 				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
 				<div class="clearfix" > </div>
@@ -177,33 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     				</div>
 				</li>
 	
-				<li><a class="color9" href="#">      </a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								
-								<ul>
-									<li><a href="product.html">新品抢先看</a></li>
-									<li><a href="product.html">men</a></li>
-									<li><a href="product.html">women</a></li>
-									<li><a href="product.html">配件</a></li>
-									<li><a href="product.html">童装</a></li>
-									<li><a href="product.html">品牌</a></li>
-								</ul>	
-							</div>							
-						</div>
-						
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
+			
 		 </ul> 
 	</div>
 </div>
@@ -337,10 +309,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		},
 		methods:{
 			add(){
+				//判断商品用户购物车商品数是否大于0
 				if(this.cnt>=1){
 					axios.get("cart.s?op=updatecart&pid="+location.hash.substring(1)).then(res=>{
 						alert(res.data);
 						location.href="checkout.html";
+					});
+					//添加购物车成功后商品数减一
+					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+						
 					});
 				}else{
 					var p=new URLSearchParams();
@@ -354,6 +331,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  					alert(res.data);
 	  					location.href="checkout.html";
 	  				});
+					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+						
+					});
 				}
 				
 			}
@@ -425,64 +405,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--//end-bottom-->
 	<!--start-footer-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-top">
-				<div class="col-md-2 footer-left">
-					<h3>About Us</h3>
-					<ul>
-						<li><a href="#">Who We Are</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						<li><a href="#">Our Sites</a></li>
-						<li><a href="#">In The News</a></li>
-						<li><a href="#">Carrers</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left">
-					<h3>Your Account</h3>
-					<ul>
-						<li><a href="account.html">Your Account</a></li>
-						<li><a href="#">Personal Information</a></li>
-						<li><a href="contact.html">Addresses</a></li>
-						<li><a href="#">Discount</a></li>
-						<li><a href="#">Track your order</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left">
-					<h3>Shopping</h3>
-					<ul>
-						<li><a href="#">Accesories</a></li>
-						<li><a href="#">Books</a></li>
-						<li><a href="#">Cloths</a></li>
-						<li><a href="#">Bags</a></li>
-						<li><a href="#">Shoes</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left ">
-					<h3>Categories</h3>
-					<ul>
-						<li><a href="#">Sports Shoes</a></li>
-						<li><a href="#">Casual Shorts</a></li>
-						<li><a href="#">Formal Shoes</a></li>
-						<li><a href="#">Party Wear</a></li>
-						<li><a href="#">Ethnic Wear</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 footer-left lost">
-					<h3>Life Style</h3>
-					<ul>
-						<li><a href="#">Spa</a></li>
-						<li><a href="#">Beauty</a></li>
-						<li><a href="#">Travel</a></li>
-						<li><a href="#">Food</a></li>
-						<li><a href="#">Trends</a></li>
-					</ul>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-
-		</div>
-	</div>
+	
 	<ul class="socials">
 		<li><a class="soc1" href="#"></a></li>
 		<li><a class="soc2" href="#"></a></li>

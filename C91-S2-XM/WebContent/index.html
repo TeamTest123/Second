@@ -78,10 +78,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="login_btn fl">
 						<a href="account.html" v-if="outlogin">登录</a>
 						<span> | </span>
-						<a href="contact.html" >用户中心</a>
+						<a href="account.html" v-if="onlogin">退出</a>
 						<span> | </span>
-						<a href="javascript:void(0)" v-if="onlogin">退出</a>
-						
 					 </div>	
 				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
 				<div class="clearfix" > </div>
@@ -160,33 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     				</div>
 				</li>
 	
-				<li><a class="color9" href="#">      </a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								
-								<ul>
-									<li><a href="product.html">新品抢先看</a></li>
-									<li><a href="product.html">men</a></li>
-									<li><a href="product.html">women</a></li>
-									<li><a href="product.html">配件</a></li>
-									<li><a href="product.html">童装</a></li>
-									<li><a href="product.html">品牌</a></li>
-								</ul>	
-							</div>							
-						</div>
-						
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
-				</li>
+			
 		 </ul> 
 	</div>
 </div>
@@ -209,14 +181,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   		 </script>
  <!--start-content-->
 		 <!--start-banner-->
-		
+		<div  id="app">
        <!--//latest-->
 		 <div class="container" >
 				<div class="recommand-section">
 					
 					<div class="recommand-section-grids">
 
-						<div class="standards" id='app'>
+						<div class="standards">
 						
 							<div  class="standards" data-selector="1">
 							<div v-for="(item,i) in list" class="tag-grid">
@@ -234,24 +206,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-      	var v =new Vue({
-      		el:"#app",
-      		data:{
-      			list:[],
-      			xh:[[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]]
-      		},
-      		created(){
-      			axios.get("index.s").then(res=>{
-      				this.list=res.data;
-      				console.log(this.list);
-      			});
-      		}
-      	});
-      
+				<div class="col-md-6">
+					<nav>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						
+						<ul class="pagination pagination-lg">
+							<li v-if="page>1"><a @click="findPage(page-1)" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li><a @click="findPage(1)">1</a></li>
+							<li><a @click="findPage(2)">2</a></li>
+							<li><a @click="findPage(3)">3</a></li>
+							<li><a @click="findPage(4)">4</a></li>
+							<li><a @click="findPage(5)">5</a></li>
+							<li><a @click="findPage(page+1)" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+						</ul>
+					</nav>
+					<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+				</div> 
+				</div>
+				<script type="text/javascript">
+			      	var v =new Vue({
+			      		el:"#app",
+			      		data:{
+			      			list:[],
+			      			xh:[[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]],
+			      			page:1
+			      		},
+			      		created(){
+			      			axios.get("index.s").then(res=>{
+			      				this.list=res.data;
+			      			});
+			      		},
+			      		methods:{
+			      			findPage(pagenum){
+			      				this.page=pagenum;
+			      				console.log(this.page);
+			      				axios.get("QueryProduct.s?page="+pagenum).then(res=>{
+			      					this.list=res.data.rows;
+			      				})
+			      			}
+			      		}
+			      	});
+			      
       
       </script>
-
 	
 		  <!--start-bottom-->
 		   <!--start-image-cursuals-->
@@ -291,7 +291,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</script>
 						
 				  </div>				
-			</div> 
+			</div>
+			
+			    
+
  <!--//页尾-->
 		<!--start-footer-->
 	    <div class="footer">
@@ -362,7 +365,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <!--//end-copyright-->
 	<!--end-footer-->
  <!--//end-content-->
-    
 
 </body>
 </html>

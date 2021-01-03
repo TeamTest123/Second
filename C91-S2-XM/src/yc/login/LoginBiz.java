@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 import com.yc.bean.User;
 import com.yc.biz.BizException;
+import com.yc.dao.AdminDao;
+
 
 public class LoginBiz {
-	private LoginDAO ld =new LoginDAO();
+	
 
 	public User BoardLogin(String uname,String upwd) throws BizException {
 		if (uname == null || uname.trim().isEmpty()) {
@@ -16,6 +18,7 @@ public class LoginBiz {
 			throw new BizException("密码不能为空");
 		}
 		try {
+			LoginDAO ld =new LoginDAO();
 			List<User> list = ld.Login(uname, upwd);
 			if (list.size() == 0) {
 				throw new BizException("用户名或密码错误");
@@ -35,6 +38,7 @@ public class LoginBiz {
 			throw new BizException("密码不能为空");
 		}
 		try {
+			AdminDao ld =new AdminDao();
 			List<User> list = ld.Login(uname, upwd);
 			if (list.size() == 0) {
 				throw new BizException("用户名或密码错误");

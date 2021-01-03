@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.yc.bean.User;
 import com.yc.biz.BizException;
 import com.yc.biz.UserBiz;
+import com.yc.dao.AdminDao;
 import com.yc.dao.UserDao;
 
 import yc.login.LoginBiz;
@@ -27,19 +28,15 @@ public class AdminServlet extends BaseServlet88{
     UserBiz uBiz=new UserBiz(); 
     private UserDao uDao =new UserDao();
     LoginBiz lbiz=new LoginBiz();
-//    //删除管理员      管理员能不能删掉？待定
-//    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setContentType("text/html;charset=utf-8");
-//		
-//		String uid=request.getParameter("uid");
-//		uBiz.delete(uid);
-//		response.getWriter().append("删除管理员成功");
-//	}
-//    
-    
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doLogin(request, response);
+		String op=request.getParameter("op");
+		if("doLogin".equals(op)) {
+			doLogin(request, response);
+		}else if("checkpage".equals(op)) {
+			checkpage(request,response);
+		}
 	}
 	
 	
@@ -98,9 +95,9 @@ public class AdminServlet extends BaseServlet88{
 		String page=request.getParameter("page");
 		
 		int iPage = page ==null ? 1: Integer.parseInt(page);
-		
-		List<User> rows = uDao.selectPage(iPage);
-		int total=uDao.selectCount();
+		AdminDao aDao=new AdminDao();
+		List<User> rows = aDao.selectPageadmin(iPage);
+		int total=aDao.selectCountadmin();
 		
 		Map<String, Object>data=new HashMap<>();
 		data.put("rows", rows);

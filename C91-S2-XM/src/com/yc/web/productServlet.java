@@ -57,7 +57,7 @@ public class productServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		Part p=request.getPart("img");
 		String filename=p.getSubmittedFileName();
-		String  webpath="/pic/"+filename;
+		String  webpath="/C91-S2-XM/童装/"+filename;
 		String realPath = request.getServletContext().getRealPath("/");
 		String realPathParent=(new File(realPath)).getParent();
 		String diskpath=realPathParent+webpath; 
