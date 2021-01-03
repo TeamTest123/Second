@@ -34,11 +34,11 @@ public class Updatecart extends BaseServlet88 {
 	
 	public  void updatecart(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		User u=(User) request.getSession().getAttribute("user");
-		System.out.println(u+"yonghua");
 		Integer uid=u.getUid();
 		
-		int pid=Integer.parseInt(request.getParameter("pid"));
-				
+		
+		int pid= Integer.parseInt(request.getParameter("pid"));
+		System.out.println(pid);		
 			try {
 				ucd.Updatecart(uid, pid);
 				write(response, "添加成功");
@@ -49,6 +49,21 @@ public class Updatecart extends BaseServlet88 {
 	}
 	
 
+	public  void jian(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+		User u=(User) request.getSession().getAttribute("user");
+		Integer uid=u.getUid();
+		
+		
+		int pid= Integer.parseInt(request.getParameter("pid"));
+		System.out.println(pid);		
+			try {
+				ucd.jian(uid, pid);
+				write(response, "减少成功");
+			} catch (BizException e) {
+				write(response, "减少失败 原因："+e.getMessage());
+			}
+		
+	}
 	private CartDao cd=new CartDao();
 	public  void getcnt(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
 		HttpSession session = request.getSession();
@@ -56,7 +71,6 @@ public class Updatecart extends BaseServlet88 {
 		Integer uid=u.getUid();
 		String pid=request.getParameter("pid");
 		int pids=Integer.parseInt(pid);
-		System.out.println(pid+"-----"+uid);
 		try {
 			
 			write(response, cd.querycnt(uid, pids));

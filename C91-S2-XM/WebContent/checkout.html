@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span> | </span>
 						<a href="contact.html" >用户中心</a>
 						<span> | </span>
-						<a href="javascript:void(0)" v-if="onlogin">退出</a>
+						<a href="javascript:void(0)" v-if="onlogin" href="account.html">退出</a>
 						
 					 </div>	
 				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
@@ -210,7 +210,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container"id="gouwu"  >
 			 <h3 class="tittle">我的购物车</h3>
 				
-			 <div class="cart-header" v-for="c in list" >
+			 <div class="cart-header" v-for="(c,i) in list" >
 				 
 				 <div class="cart-sec simpleCart_shelfItem" >
 						<div class="cart-item cyc">
@@ -225,9 +225,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 							 <div class="delivery">
 							 <p>价格: {{c.price}}</p>
-							 <span><button @click="c.number--">-</button>
+							 <span><button @click="jian(c.pid,c.number)" >-</button>
 								{{c.number}}
-								<button @click="c.number++">+</button>
+								<button @click="add(c.pid)">+</button>
 								</span>
 					 
 							 <div class="clearfix"></div>
@@ -239,10 +239,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 </div>
 			
 			</div>
-				<span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<span>
 				<button>提交订单</button></span>
 		 </div>
 		
@@ -258,9 +255,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  					this.list=res.data;
 	  					console.log(res.data);
 	  				});
+	  				
 	  			},
 	  			methods:{
-	  				
+	  				add:function(s){
+	  					axios.get("cart.s?op=updatecart&pid="+s).then(res=>{
+							alert(res.data);
+							location.href="checkout.html";
+						});
+	  				},
+	  				jian:function(s,n){
+	  					
+	  					if(n-1<=0){
+	  						axios.get("delete.s?op=jian&pid="+s).then(res=>{
+								alert(res.data);
+								location.href="checkout.html";
+							});
+	  					}else{
+	  						axios.get("cart.s?op=jian&pid="+s).then(res=>{
+								alert(res.data);
+								location.href="checkout.html";
+							});
+	  						
+	  					}
+	  					
+	  				}
 		 }
 		 })
 		 
