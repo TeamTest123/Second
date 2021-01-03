@@ -847,17 +847,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="account-top heading">
 							<h3>管理员登录</h3>
 						</div>
-						<div class="address1">
+						<div class="address">
 							<span>管理员用户名</span>
-							<input v-model="adname" type="text1">
+							<input v-model="adname" type="text">
 						</div>
-						<div class="address1">
+						<div class="address">
 							<span>密码</span>
-							<input v-model="adpwd" type="password1">
+							<input v-model="adpwd" type="password">
 						</div>
-						<div class="address1">
+						<div class="address">
 							<a class="forgot" href="#">忘记密码?</a>
-							<input @click="login()" type="button1" value="登录">
+							<input @click="adminlogin()" type="button" value="登录">
 						</div>
 				<div class="clearfix"></div>
 				
@@ -874,16 +874,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							 adpwd:""
 						 },
 							 methods:{
-								login(){
+								adminlogin(){
 									
-									var url="loginUser.s";
+									var url="AdminServlet";
 									var p=new URLSearchParams();
 									p.append("adname",this.adname);
 									p.append("adpwd",this.adpwd);
 										axios.post(url,p).then(res=>{
 						      				alert(res.data);
-						      				if(res.data=="登陆成功"){
-												location.href="index.html";
+						      				if(res.data=="管理员登录成功"){
+												location.href="../demo.html";
 											}
 						      			});
 										

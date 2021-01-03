@@ -12,7 +12,7 @@ import com.yc.util.DBHelper.ResultSetMapper;
 
 public class AdminDao {
 	public List<Admin> Login(String adname,String adpwd) throws SQLException{
-		String sql="select * from user where adname=? and adpwd=? ";
+		String sql="select * from admin where adname=? and adpwd=? ";
 		
 		return DBHelper.selectList(sql, new ResultSetMapper<Admin>() {
 
@@ -28,6 +28,22 @@ public class AdminDao {
 		
 		}, adname,adpwd);
 	}
+
+	//用户实体对象属性映射类，因后续多次调用，所以单独建立一个类
+	class AdminMapper implements ResultSetMapper<Admin>{
+
+		@Override
+		public Admin map(ResultSet rs) throws SQLException {
+			Admin vv=new Admin();
+			vv.setAid(rs.getInt("aid"));
+			vv.setAdname(rs.getString("adname"));
+			
+				
+				return vv;
+		}
+	}
+
+	
 		
 
 }

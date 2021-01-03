@@ -87,7 +87,7 @@ public class DBHelper {
 					}
 
 				});
-		List<Admin> list2 =selectList("select * from user where aid<30",
+		List<Admin> list2 =selectList("select * from admin where aid<30",
 				new ResultSetMapper<Admin>() {
 			
 					public Admin map(ResultSet rs) throws SQLException{
