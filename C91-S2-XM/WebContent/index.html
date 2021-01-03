@@ -66,14 +66,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  <a href="index.html"><h1>购物 <span>商城</span></h1> </a>
 		  </div>
 		  <div class="header_right">
-			<div class="cart box_1">
+			<div class="cart box_1" id='app3'>
 				<a href="checkout.html">
-				<div class="total" id='app3'>
+				<div class="total" >
 					<span >
 					</span> 我的购物车</div>
 					<i class="glyphicon glyphicon-购物-cart"></i></a>
 					<div class="login_info fl" v-if="onlogin">
-						欢迎：<em>y c</em>
+						欢迎：<em>{{uname}}</em>
 					</div>
 					<div class="login_btn fl">
 						<a href="account.html" v-if="outlogin">登录</a>
@@ -97,25 +97,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    		data : {
 	    			onlogin:false,
 	    			outlogin:true,
-	    			user : ''
+	    			uname : ''
 	    			
 	    		},
 	    		mounted:function(){
+	    			console.info('----------');
 	    			//并发访问
-	    			axios.all[check(),getProduct()].then(
+	    			axios.all([check()]).then(
+	    				axios.spread((fn1)=>{
 	    				//用户是否登录判断   返回的结果中存储用户信息	user
-	    				if(fn1.data.user){
+	    				if(fn1.data){
 	    					this.onlogin=true;
 	    					this.outlogin=false;
-	    					this.user=fn1.data.
+	    					this.uname=fn1.data.uname;
+	    					console.info(this.uname);
+	    				}else{
+	    					//未登录
+	    					this.onlogin=false;
+	    					this.outlogin=true;
 	    				}
+	    				})
+	    			
 	    			)
-	    			
-	    		},
-	    		methods : {
-	    			
-	    		}
-	    		
+	    			},
 	    	});
 	    
 	    	//检查用户是否登录

@@ -21,12 +21,18 @@ public class UserServlet extends BaseServlet {
        
 	private LoginBiz lBiz=new LoginBiz();
 	
-	public void doPost(HttpServletRequest request,HttpServletResponse response)
-			throws IOException{
+	public void doGet(HttpServletRequest request,HttpServletResponse response)
+			throws IOException, ServletException{
 		response.setContentType("text/html;charset=utf-8");
 		
 		String uname=request.getParameter("uname");
 		String upwd=request.getParameter("upwd");
+		String op=request.getParameter("op");
+		System.out.println(op);
+		if(op!=null && op.equals("doPost")) {
+			doCheck(request,response);
+			return ;
+		}
 		
 		try {
 			
@@ -44,18 +50,19 @@ public class UserServlet extends BaseServlet {
 		System.out.println("docheck---------");
 		//从session会话中获取登陆的用户信息
 		User user=(User)request.getSession().getAttribute("user");
-		Map<String, Object>map=null;
-		if(null!=user) {
-			Cart t=new Cart();
-			t.setUid(user.getUid());
-			map=CartDao.findByUid(t);
-		}
-		if(null==map) {
-			map=new HashMap<String, Object>();
-		}
-		
-		map.put("user", user);
-		printJSon(map, response);
+		System.out.println(user+"cfnhh");
+//		Map<String, Object>map=null;
+//		if(null!=user) {
+//			Cart t=new Cart();
+//			t.setUid(user.getUid());
+//			map=CartDao.findByUid(t);
+//		}
+//		if(null==map) {
+//			map=new HashMap<String, Object>();
+//		}
+//		
+//		map.put("user", user);
+		printJSon(user, response);
 		
 	}
     
