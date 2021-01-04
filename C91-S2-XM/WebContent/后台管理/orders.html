@@ -3,8 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <title>订单管理</title>
+
+
+<link rel="stylesheet" type="text/css"
+	href="../easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+	
+<script type="text/javascript">
+
+function fmtcz(value,row,index){
+	//函数的值会被解析成html元素
+	console.log(row.order_status);
+	if(row.order_status =='已付款')
+	return "<button onclick='upa("+row.did+")'>修改</button>";
+	else{
+		return '';
+	}
+}
+
+function upa(id){
+	$.messager.confirm('系统提示','您想要修改该商品信息吗？',function(r){
+		if(r){
+			var url="../OrdersServlet.action?op=update";
+			var params={did:id};
+			function callback(data){ //data:Servlet返回的数据
+				//刷新表格数据
+				$("#table").datagrid('reload');
+				$.messager.show({
+					title:'系统提示',
+					msg:data,
+					timeout:5000,//5秒
+					showType:'slide'
+				});
+			
+		}
+			$.post(url,params,callback);
+		}
+	});
+}
+</script>
+
 </head>
 <body>
+<div id="cc" class="easyui-layout" data-options="fit:true">
+
+		<div data-options="region:'center',title:'查询结果'"
+			style="padding: 5px; background: #eee;">
+			<table id="table" class="easyui-datagrid"
+				data-options="
+  	    	fit:true,
+  	    	url:'../OrdersServlet.action?op=queryPage',
+  	    	fitColumns:true,
+  	    	singSelect:true,
+  	    	pagination:true ">
+				<thead>
+					<tr>
+						<th data-options="field:'did',width:100">订单编码</th>
+						<th data-options="field:'uid',width:100">用户编码</th>
+						<th data-options="field:'money',width:100">总金额</th>
+						<th data-options="field:'pay',width:100">支付方式</th>
+						<th data-options="field:'order_status',width:100">订单状态</th>
+						<th data-options="field:'time',width:100">下单时间</th>
+						<th data-options="field:'不存在的字段',width:20,formatter:fmtcz">操作</th>
+		
+
+					</tr>
+
+				</thead>
+			</table>
+		</div>
+	</div>
+
+
 
 </body>
 </html>

@@ -10,9 +10,9 @@ public class Orders implements java.io.Serializable{
 	private Integer did;
 	private Integer uid;
 	private String money;
-	private String pay;
+	private String pay;//支付方式
 	private String order_status;
-	private String time;
+	private String time;//下单时间
 	@Override
 	public String toString() {
 		return "Dingdan [did=" + did + ", uid=" + uid + ", money=" + money + ", pay=" + pay + ", order_status="
