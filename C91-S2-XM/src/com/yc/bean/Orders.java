@@ -10,13 +10,37 @@ public class Orders implements java.io.Serializable{
 	private Integer did;
 	private Integer uid;
 	private String money;
-	private String pay;//支付方式
+	private String pay;
 	private String order_status;
-	private String time;//下单时间
+	private String time;
+	private String uname;
+	private String phone;
+	private String address;
+	
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	@Override
 	public String toString() {
-		return "Dingdan [did=" + did + ", uid=" + uid + ", money=" + money + ", pay=" + pay + ", order_status="
-				+ order_status + ", time=" + time + "]";
+		return "Orders [did=" + did + ", uid=" + uid + ", money=" + money + ", pay=" + pay + ", order_status="
+				+ order_status + ", time=" + time + ", uname=" + uname + ", phone=" + phone + ", address=" + address
+				+ "]";
 	}
 	public Integer getDid() {
 		return did;

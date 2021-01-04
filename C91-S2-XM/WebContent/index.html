@@ -171,7 +171,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div  class="standards" data-selector="1">
 							<div v-for="(item,i) in list" class="tag-grid">
 								<div class="tag-wrapper">		
-									<a :href="'single.html#'+item.pid"><img :src="item.image" class="img-responsive" alt="" /></a>
+									<a :href="'single.html#'+item.pid">
+									<img :src="item.image" class="img-responsive" alt="" /></a>
 									<div class="r-title">
 										<h3>{{item.pname}}</h3>
 										<h4>{{item.price}}</h4>

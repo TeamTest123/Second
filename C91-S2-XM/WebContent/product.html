@@ -88,41 +88,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>	
 	    </div>
 		<!--start-header-menu-->
-		<ul class="megamenu skyblue">
-			<li class="active grid"><a class="color1" href="index.html">主页</a></li>
-			<li class="grid"><a class="color2" href="product.html">童装</a>
-				
-				</li>
-			<li><a class="color4" href="#">男装</a>
-				
-				</li>				
-				<li><a class="color5" href="#">童鞋</a>
-				
-				</li>
-				<li><a class="color6" href="#">帽子</a>
-				
-				</li>				
-			
-					</ul>											
+		
+															
 					
 </div>
+<script type="text/javascript">
+  		 var v=new Vue({
+  			el:"#app1",
+  			data:{
+  				list:[],
+  			},
+  			created(){
+  				axios.get("fen.s").then(res=>{
+  					//res axios 封装的响应结果对象
+  					this.list=res.data;
+  					console.log(res.data);
+  				});
+  			}
+  		}) 
+  		 </script>
  <!--start-content-->
 <!--products-->
-	<div class="products">
+<div class="productss">
+<div class="products">
 		<div class="container">
 			<div class="products-grids">
 				<div class="col-md-8 products-grid-left">
 					<div class="products-grid-lft" >
-						<div class="products-grd" v-for="s in xh">
-							<div class="p-one simpleCart_shelfItem prd" v-for="m in s">
-								<a href="single.html">
-									<img :src="list[m].image" alt="" class="img-responsive" />
+						<div class="products-grd" v-for="m in list">
+							<div class="p-one simpleCart_shelfItem prd" >
+								<a :href="'single.html#'+m.pid">
+									<img :src="m.image" alt="" class="img-responsive" />
 								</a>
-								<h4>{{list[m].pname}}</h4>
+								<h4>{{m.pname}}</h4>
+						<!-- <div v-for="(item,i) in list" class="tag-grid">
+						<div class="tag-wrapper">		
+							<a :href="'single.html#'+item.pid">
+								<img :src="item.image" class="img-responsive" alt="" />
+							</a>
+							<div class="r-title">
+								<h3>{{item.pname}}</h3>
+								<h4>{{item.price}}</h4>
+							</div>
+						</div> -->
 								<p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> 
-								<span class=" item_price valsa">${{list[m].price}}</span></a></p>
+								<span class=" item_price valsa">${{m.price}}</span></a></p>
 								<div class="pro-grd">
-									<a href="single.html">Quick View</a>
+									<a :href="'single.html#'+m.pid">Quick View</a>
 								</div>
 							</div>	
 						</div>
@@ -135,20 +147,74 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+	<div class="col-md-6">
+					<nav>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						
+						<ul class="pagination pagination-lg">
+							<li >
+							<a  aria-label="Previous" 
+							:href="'product.html?page='+(ipage-1)+'#'+list[0].product_type"
+							><span aria-hidden="true">«</span></a>
+							</li>
+							<li v-for="(s,i) in page"  >
+							<a :href=" 'product.html?page='+ (i+1)+'#'+list[0].product_type"
+							:style="{ border:(i+1)== ipage?'3px solid #000':''}">{{i+1}}</a></li>
+							<li>
+							<a :href="'product.html?page='+(ipage+1)+'#'+list[0].product_type" aria-label="Next"><span aria-hidden="true">»</span></a>
+							</li>
+						</ul>
+					</nav>
+					<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+				</div> 
+				</div>
+</div>
+	
 
 <script type="text/javascript">
 var v=new Vue({
-	el:".products",
+	el:".productss",
 	data:{
 		list:[],
-		xh:[[0,1,2],[3,4,5]],
+		/* xh:[[0,1,2],[3,4,5],[6,7,8]], */
+		page:1,
+		ipage:1,
 	},
 	created(){
-		axios.get("goodtype.action?op=querydetailgoods&producttype="+location.hash.substring(1))
+		var search = location.search; // ?page=1;
+		// repalce  split
+		var items = search.split(new RegExp("="));
+		var page= items[1];
+		this.ipage=parseInt(page);
+		/*   axios.get("goodtype.action?op=querydetailgoods&producttype="+type)
 		.then(res=>{
 			this.list=res.data;
+			console.log(this.list);
+		});  */ 
+		  axios.get("fen.ss?op=querysinger&category="+location.hash.substring(1)+"&page="+page)
+		.then(res=>{
+			this.list=res.data;
+		}); 
+		axios.get("fen.ss?op=querycnt&type="+location.hash.substring(1))
+		.then(res=>{
+			this.page=parseInt(res.data/9);
+			if(res.data % 9> 0){
+				this.page++;
+			}
 		});
-	}
+	},
+	/* methods:{
+		findPage(pagenum){
+			this.page=pagenum;
+			console.log(this.page);
+			axios.get("QueryProduct.s?page="+pagenum).then(res=>{
+				this.list=res.data.rows;
+			})
+		}
+ 	} */
 });
 
 </script>

@@ -10,10 +10,10 @@ public class OrderBiz {
 	//创建订单
 	private OrdersDao odao=new OrdersDao();
 	private CartDao cdao=new CartDao();
-	public void create(Object uid,String money) throws BizException {
+	public void create(Object uid) throws BizException {
 		
 		try {
-			Object did=odao.insert(uid, money);
+			Object did=odao.insert(uid);
 			odao.insertOrderdetail(uid, did);
 			cdao.deleteByuid(uid);
 		} catch (SQLException e) {
@@ -24,7 +24,7 @@ public class OrderBiz {
 	
 	public static void main(String[] args) throws BizException {
 		OrderBiz obiz=new OrderBiz();
-		obiz.create(4, "150");
+		obiz.create(4);
 	}
 	
 	/**
