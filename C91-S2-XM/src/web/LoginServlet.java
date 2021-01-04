@@ -1,4 +1,4 @@
-package yc.login;
+package web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

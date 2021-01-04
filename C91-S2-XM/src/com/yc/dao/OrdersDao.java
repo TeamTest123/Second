@@ -1,10 +1,10 @@
 package com.yc.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
-import com.yc.bean.Category;
 import com.yc.bean.Orders;
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
@@ -40,5 +40,33 @@ public class OrdersDao {
 			}
 		});
 		return  list;
+	}
+	
+	public Object insert(Object uid,String money) throws SQLException {
+		String sql="insert into orders (did,uid,money,pay,order_status,time)values (null,?,?,'支付宝','已付款',now()) ";
+		Connection conn=DBHelper.getConnection();
+		PreparedStatement ps=conn.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+		ps.setObject(1,uid );
+		ps.setObject(2,money);
+		ps.executeUpdate();
+		ResultSet rs=ps.getGeneratedKeys();
+		rs.next();
+		return rs.getObject(1);
+		
+	}
+
+	
+	public void insertOrderdetail(Object uid,Object did)throws SQLException{
+		String sql="INSERT INTO orders_detail SELECT\n" +
+				"	NULL,\n" +
+				"	?,\n" +
+				"	a.pid,\n" +
+				"	p.price,\n" +
+				"	a.number\n" +
+				"FROM\n" +
+				"	cart a\n" +
+				"JOIN product p ON a.pid = p.pid where uid =? ";
+		DBHelper.update(sql,did,uid);
+		
 	}
 }

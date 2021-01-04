@@ -62,15 +62,14 @@ public class UserDao {
 	//增加用户
 	public void insert(User user) throws SQLException {
 
-		String sql="insert into user values(null,?,?,?,?,?,?)";
+		String sql="insert into user values(null,?,?,?,?,?,1)";
 		DBHelper.update(sql, 
 
 				user.getUname(),
 				user.getUpwd(),
 				user.getPhone(),
 				user.getEmail(),
-				user.getAddress(),
-				user.getStatus());
+				user.getAddress());
 	}
 	
 	//查询是否有重名用户
