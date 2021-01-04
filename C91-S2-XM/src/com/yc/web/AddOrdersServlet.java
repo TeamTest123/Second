@@ -19,6 +19,8 @@ public class AddOrdersServlet extends HttpServlet {
        
     private OrderBiz biz=new OrderBiz();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		Orders orders =new Orders();
 		HttpSession session = request.getSession();
 		User u=(User) request.getSession().getAttribute("user");

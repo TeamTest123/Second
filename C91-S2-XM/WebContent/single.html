@@ -295,9 +295,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						location.href="checkout.html";
 					});
 					//添加购物车成功后商品数减一
-					/* axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+					 axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
 						
-					}); */
+					}); 
 				}else{
 					var p=new URLSearchParams();
 					p.append("pid",this.product.pid);
@@ -310,9 +310,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  					alert(res.data);
 	  					location.href="checkout.html";
 	  				});
-					/* axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
 						
-					}); */
+					}); 
 				}
 				
 			}

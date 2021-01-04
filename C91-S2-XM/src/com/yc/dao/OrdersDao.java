@@ -20,7 +20,7 @@ public class OrdersDao {
 				"	o.time\n" +
 				"FROM\n" +
 				"	orders o\n" +
-				"LEFT JOIN user u ON o.uid = u.uid where o.uid =?;";
+				"LEFT JOIN user u ON o.uid = u.uid where o.uid =? ORDER BY  o.time DESC;";
 		List<Orders>list;
 		list=DBHelper.selectList(sql, new ResultSetMapper<Orders>() {
 
@@ -44,6 +44,7 @@ public class OrdersDao {
 	}
 	
 	public Object insert(Object uid) throws SQLException {
+		Orders orders=(Orders)uid;
 		String sql="INSERT INTO orders (\n" +
 				"	did,\n" +
 				"	uid,\n" +
@@ -71,17 +72,21 @@ public class OrdersDao {
 				"	)";
 		Connection conn=DBHelper.getConnection();
 		PreparedStatement ps=conn.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-		ps.setObject(1,uid );
-		ps.setObject(2,uid );
+		System.out.println("哈哈"+sql);
+		System.out.println("uid:"+uid);
+		ps.setObject(1,orders.getUid() );
+		ps.setObject(2,orders.getUid() );
 		ps.executeUpdate();
 		ResultSet rs=ps.getGeneratedKeys();
 		rs.next();
+		
 		return rs.getObject(1);
 		
 	}
 
 	
 	public void insertOrderdetail(Object uid,Object did)throws SQLException{
+		Orders orders=(Orders)uid;
 		String sql="INSERT INTO orders_detail SELECT\n" +
 				"	NULL,\n" +
 				"	?,\n" +
@@ -91,7 +96,7 @@ public class OrdersDao {
 				"FROM\n" +
 				"	cart a\n" +
 				"JOIN product p ON a.pid = p.pid where uid =? ";
-		DBHelper.update(sql,did,uid);
+		DBHelper.update(sql,did,orders.getUid());
 		
 	}
 }

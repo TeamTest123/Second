@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.yc.bean.Cart;
-
+import com.yc.bean.Orders;
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
 
@@ -109,9 +109,10 @@ public class CartDao {
 	}
 	
 	public int deleteByuid(Object uid) throws SQLException {
+		Orders orders=(Orders)uid;
 		String sql="delete from cart where uid=?";
 		DBHelper dbh=new DBHelper();
-		return dbh.update(sql, uid);
+		return dbh.update(sql, orders.getUid());
 		 
 	}
 }
