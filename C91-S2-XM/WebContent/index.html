@@ -69,8 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="cart box_1" id='app3'>
 				<a href="checkout.html">
 				<div class="total" >
-					<span >
-					</span> 我的购物车</div>
+					 我的购物车</div>
 					<i class="glyphicon glyphicon-购物-cart"></i></a>
 					<div class="login_info fl" v-if="onlogin">
 						欢迎：<em>{{uname}}</em>
@@ -129,37 +128,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 		<!-- 商品展示- -->
 		
-		<ul  class="megamenu skyblue" id='app1'>
+		<ul  class="megamenu skyblue" id='app1' >
+		
 			<li class="active grid">
 			<a class="color1" href="index.html">首页</a></li>
-			<li class="grid">
-				<span v-for="c in list">
+			<li class="grid" 
+			 v-for="c in list">
 				<a class="color9" :href="'product.html#'+c.bname">{{c.bname}}</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;<span> | </span>
-				</span>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div  class="h_nav">
-								
-								<ul>
-									<li ><a href="product.html"></a></li>
-								</ul>	
-							</div>							
-						</div>
-					
-				</div>
-		
-  
-  
-  
- 
-				
-    				</div>
-				</li>
-	
-			
-		 </ul> 
+				</li><li ><a href="product.html"></a></li>
+			</ul> 
 	</div>
 </div>
 </div>

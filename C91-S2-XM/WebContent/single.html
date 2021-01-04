@@ -147,36 +147,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--start-header-menu-->
 		
 		<!-- 商品展示- -->
+	<ul  class="megamenu skyblue" id='app1' >
 		
-		<ul  class="megamenu skyblue" id='app1'>
-			<li class="active grid"><a class="color1" href="index.html">首页</a></li>
-			<li class="grid">
-				<span v-for="c in list">
-				<a class="color9" href="#">{{c.bname}}</a>&nbsp;&nbsp;&nbsp;&nbsp;<span> | </span>
-				</span>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div  class="h_nav">
-								
-								<ul>
-									<li ><a href="product.html"></a></li>
-								</ul>	
-							</div>							
-						</div>
-					
-				</div>
-		
-  
-  
-  
- 
-				
-    				</div>
-				</li>
-	
-			
-		 </ul> 
+			<li class="active grid">
+			<a class="color1" href="index.html">首页</a></li>
+			<li class="grid" 
+			 v-for="c in list">
+				<a class="color9" :href="'product.html#'+c.bname">{{c.bname}}</a>
+				</li><li ><a href="product.html"></a></li>
+			</ul>  
 	</div>
 </div>
 </div>
@@ -316,9 +295,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						location.href="checkout.html";
 					});
 					//添加购物车成功后商品数减一
-					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+					/* axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
 						
-					});
+					}); */
 				}else{
 					var p=new URLSearchParams();
 					p.append("pid",this.product.pid);
@@ -331,9 +310,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  					alert(res.data);
 	  					location.href="checkout.html";
 	  				});
-					axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
+					/* axios.get("num.s?op=updatenum&pid="+location.hash.substring(1)).then(res=>{
 						
-					});
+					}); */
 				}
 				
 			}
