@@ -57,7 +57,103 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 <!-- header -->
+<div class="header_bg">
+   <div class="container">
+	<div class="header">
+	  <div class="head-t">
+		 <div class="logo">
+			  <a href="index.html"><h1>购物 <span>商城</span></h1> </a>
+		  </div>
+		  <div class="header_right">
+			<div class="cart box_1" id='app3'>
+				<a href="checkout.html">
+				<div class="total" >
+					 我的购物车</div>
+					<i class="glyphicon glyphicon-购物-cart"></i></a>
+					<div class="login_info fl" v-if="onlogin">
+						欢迎：<em>{{uname}}</em>
+					</div>
+					<div class="login_btn fl">
+						<a href="account.html" v-if="outlogin">登录</a>
+						<span> | </span>
+						<a href="account.html" v-if="onlogin">退出</a>
+						<span> | </span>
+					 </div>	
+				<p><a href="javascript:;" class="simpleCart_empty"></a></p>
+				<div class="clearfix" > </div>
+			</div>		
+				 
+		</div>
+		<div class="clearfix"></div>	
+	    </div>
+	    
+	    <script type="text/javascript">
+	     	var user=new Vue({
+	    		el : '#app3',
+	    		data : {
+	    			onlogin:false,
+	    			outlogin:true,
+	    			uname : ''
+	    			
+	    		},
+	    		mounted:function(){
+	    			//并发访问
+	    			axios.all([check()]).then(
+	    				axios.spread((fn1)=>{
+	    				//用户是否登录判断   返回的结果中存储用户信息	user
+	    				if(fn1.data){
+	    					this.onlogin=true;
+	    					this.outlogin=false;
+	    					this.uname=fn1.data.uname;
+	    					console.info(this.uname);
+	    				}else{
+	    					//未登录
+	    					this.onlogin=false;
+	    					this.outlogin=true;
+	    				}
+	    				})
+	    			
+	    			)
+	    			},
+	    	});
+	    
+	    	//检查用户是否登录
+	    	function check(){
+	    		return axios.get("loginUser.s?op=doPost");
+	    	} 
+	    </script>
+		<!--start-header-menu-->
+		
+		<!-- 商品展示- -->
+		
+			<ul  class="megamenu skyblue" id='app1' >
+		
+			<li class="active grid">
+			<a class="color1" href="index.html">首页</a></li>
+			<li class="grid" 
+			 v-for="c in list">
+				<a class="color9" :href="'product.html#'+c.bname">{{c.bname}}</a>
+				</li><li ><a href="product.html"></a></li>
+			</ul> 
+	</div>
+</div>
+</div>
 
+<script type="text/javascript">
+  		 var v=new Vue({
+  			el:"#app1",
+  			data:{
+  				list:[],
+  			},
+  			created(){
+  				axios.get("fen.s").then(res=>{
+  					//res axios 封装的响应结果对象
+  					this.list=res.data;
+  					console.log(res.data);
+  				});
+  			}
+  		}) 
+  		 </script>
  <!--start-content-->
 <!--contact-->
    <div class="contact" id="d">
@@ -66,7 +162,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			     <div class="lcontact span_1_of_contact" >
 				      <div class="contact-form" v-for="c in list">
 				  	        <form>
-					    	    <h3 class="comment-form-author"><label>买家姓名：{{c.uid}}</label>
+					    	    <h3 class="comment-form-author"><label>买家姓名：{{c.uname}}</label>
+					    	    	
+						    	</h3>
+						    	<h3 class="comment-form-author"><label>买家电话：{{c.phone}}</label>
+					    	    	
+						    	</h3>
+						    	<h3 class="comment-form-author"><label>买家地址：{{c.address}}</label>
 					    	    	
 						    	</h3>
 						    	<h3 class="comment-form-author"><label>总金额：{{c.money}}</label>
@@ -100,7 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  list:'',
 	  },
 	  created(){
-			axios.get("order.s").then(res=>{
+			axios.get("orders.s").then(res=>{
 				//res axios 封装的响应结果对象
 				this.list=res.data;
 				console.log(res.data);
