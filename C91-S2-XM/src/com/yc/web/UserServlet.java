@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.yc.bean.User;
 import com.yc.biz.BizException;
-
-import yc.login.LoginBiz;
+import com.yc.biz.LoginBiz;
 
 
 @WebServlet("/loginUser.s")

@@ -31,7 +31,7 @@ public class productServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		Product ss = new Product();
 		ss.setProduct_type(request.getParameter("product_type"));

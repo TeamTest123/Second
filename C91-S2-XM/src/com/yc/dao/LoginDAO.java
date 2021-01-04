@@ -1,4 +1,4 @@
-package yc.login;
+package com.yc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>添加商品</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="../js/vue.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
 <link rel="stylesheet" type="text/css"
@@ -25,8 +25,8 @@
 							<td class="td_right">商品类型：</td>
 							<td>
 									<select class="easyui-combobox select" style="width:100px" 
-										data-options="valueField:'sid',textField:'bname',
-										url:'../goodtype.action?op=findAll'" name="sid" id="Category">
+										data-options="valueField:'bname',textField:'bname',
+										url:'../goodtype.action?op=findAll'" name="product_type" id="Category">
 									</select>
 							</td>
 							<td class="td_right">商品名称：</td>
@@ -35,7 +35,7 @@
 							</td>
 							<td class="td_right">商品数量：</td>
 							<td>
-								<input type="number" v-model="number" name="number" class="input-text lh30" size="40" placeholder="商品数量">
+								<input type="number" v-model="number" name="number" id="number"class="input-text lh30" size="40" placeholder="商品数量">
 							</td>
 						</tr>
 						<tr>
@@ -53,7 +53,7 @@
 							</td>
 							<td class="td_right">商品图片：</td>
 							<td>
-								<input type="file" v-model="image" name="img" class="input-text lh30" size="40" multiple="multiple">
+								<input type="file" name="img" class="input-text lh30" size="40" multiple="multiple">
 							</td>
 							<td></td>
 							<td></td>
