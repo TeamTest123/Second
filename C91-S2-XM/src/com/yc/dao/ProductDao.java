@@ -57,7 +57,7 @@ public class ProductDao {
 	
 	public List<Product> selectByType(String product_type) throws SQLException {
 		String sql="select * from product where product_type=?";
-		List<Product>list;
+		List<Product> list;
 		list=DBHelper.selectList(sql, new ResultSetMapper<Product>() {
 
 			@Override
