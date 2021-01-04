@@ -107,4 +107,11 @@ public class CartDao {
 		return dbh.update(sql, pid,uid);
 		 
 	}
+	
+	public int deleteByuid(Object uid) throws SQLException {
+		String sql="delete from cart where uid=?";
+		DBHelper dbh=new DBHelper();
+		return dbh.update(sql, uid);
+		 
+	}
 }
