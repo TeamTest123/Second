@@ -14,11 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.yc.bean.User;
 import com.yc.biz.BizException;
+import com.yc.biz.LoginBiz;
 import com.yc.biz.UserBiz;
 import com.yc.dao.AdminDao;
 import com.yc.dao.UserDao;
-
-import yc.login.LoginBiz;
 
 
 @WebServlet("/Manager.s")

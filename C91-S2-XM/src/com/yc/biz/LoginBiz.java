@@ -1,10 +1,10 @@
-package yc.login;
+package com.yc.biz;
 
 import java.sql.SQLException;
 import java.util.List;
 import com.yc.bean.User;
-import com.yc.biz.BizException;
 import com.yc.dao.AdminDao;
+import com.yc.dao.LoginDAO;
 
 
 public class LoginBiz {
