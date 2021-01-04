@@ -3,8 +3,6 @@ package com.yc.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
-import com.yc.bean.Category;
 import com.yc.bean.Orders;
 import com.yc.util.DBHelper;
 import com.yc.util.DBHelper.ResultSetMapper;
