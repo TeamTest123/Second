@@ -1,9 +1,7 @@
 package com.yc.biz;
 
 import java.sql.SQLException;
-
 import com.yc.bean.Product;
-import com.yc.bean.User;
 import com.yc.dao.ProductDao;
 
 
@@ -37,14 +35,9 @@ public class ProductBiz {
 			pDao.add(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-	
-		
-		
+		}		
 	}
 
 
-	
-	
 
 }
