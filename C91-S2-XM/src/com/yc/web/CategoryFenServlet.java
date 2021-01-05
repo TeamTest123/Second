@@ -36,7 +36,12 @@ public class CategoryFenServlet extends web.BaseServlet{
 	public void querysinger(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		String category=request.getParameter("category");
 		String page=request.getParameter("page");
-		int ipage=page .equals("undefined")? 1:Integer.parseInt(page);
+		int ipage=0;
+		if (page .equals("undefined")|| page.equals("NaN")) {
+			ipage=1;
+		}else {
+			ipage=Integer.parseInt(page);
+		}
 		try {
 			write(response, fd.listtypefen(category, ipage));
 		} catch (IOException | SQLException e) {
