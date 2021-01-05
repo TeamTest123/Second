@@ -73,14 +73,12 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="#" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="#">首页</a></li>
                 <li><a href="../index.html" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="../account.html">管理员</a></li>
-                <li><a href="../index.html">退出</a></li>
+                <li><a href="../account.html">退出</a></li>
             </ul>
         </div>
     </div>
@@ -118,29 +116,18 @@
             </div>
             <div class="result-content">
                 <ul class="sys-info-list">
-                    <li>
-                        <label class="res-lab">操作系统</label><span class="res-info">WINNT</span>
+                   <li>
+                        <label class="res-lab">开发人员</label><span class="res-info">袁超、张钰婷、张韬</span>
                     </li>
                     <li>
-                        <label class="res-lab">运行环境</label><span class="res-info">Apache/2.2.21 (Win64) PHP/7.3.10</span>
+                        <label class="res-lab">运行环境</label><span class="res-info">Apache/tomcat/8.5.61</span>
+                    </li>
+         
+                    <li>
+                        <label class="res-lab">完成时间</label><span class="res-info">2021年1月</span>
                     </li>
                     <li>
-                        <label class="res-lab">PHP运行方式</label><span class="res-info">apache2handler</span>
-                    </li>
-                    <li>
-                        <label class="res-lab">静静设计-版本</label><span class="res-info">v-0.1</span>
-                    </li>
-                    <li>
-                        <label class="res-lab">上传附件限制</label><span class="res-info">2M</span>
-                    </li>
-                    <li>
-                        <label class="res-lab">北京时间</label><span class="res-info">2019年3月18日 21:08:24</span>
-                    </li>
-                    <li>
-                        <label class="res-lab">服务器域名/IP</label><span class="res-info">localhost [ 127.0.0.1 ]</span>
-                    </li>
-                    <li>
-                        <label class="res-lab">Host</label><span class="res-info">127.0.0.1</span>
+                        <label class="res-lab">服务器域名/IP</label><span class="res-info">47.92.66.31</span>
                     </li>
                 </ul>
             </div>

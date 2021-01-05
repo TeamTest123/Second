@@ -122,7 +122,7 @@ body{
 					</div>
 					<div  class="address">
 						<span>电子邮箱</span>
-						<input v-model="email" id="email" type="text" placeholder="请输入电子邮箱" onblur="checkEmail()">
+						<input v-model="email" id="email" type="text" placeholder="请输入电子邮箱" >
 						 <td><div id="email_prompt"></div></td>
 					</div>
 					<div  class="address">
@@ -190,20 +190,7 @@ body{
 	        }
 	        return true;
 	      }
-	  
 
-	  /*验证邮箱*/
-	  function checkEmail(){
-	    var email=$("email").val();
-	    email_prompt.innerHTML="";
-	    var reg=/^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;    
-	      if(reg.test(email)==false){
-	        email_prompt.innerHTML="!!Email格式不正确，例如web@163.com";
-	      return false;
-	        }
-	        return true;
-	  }
-	  
 	  /*验证手机号码*/
 	  function checkMobile(){
 	      var phone=$("#phone").val();

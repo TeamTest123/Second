@@ -76,14 +76,12 @@ function save(){
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="#" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="admin_index.jsp">首页</a></li>
                 <li><a href="../index.html" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="../account.html">管理员</a></li>
-                <li><a href="../index.html">退出</a></li>
+                <li><a href="../account.html">退出</a></li>
             </ul>
         </div>
     </div>
@@ -113,7 +111,7 @@ function save(){
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">用户管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="../index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">用户管理</span></div>
         </div>
         <div class="result-wrap">
             
@@ -122,12 +120,11 @@ function save(){
 		<iframe src="../后台管理/admin.html" width="100%" height="600px"></iframe>
 	
 	</div>
-            </form>
         </div>
     
     
     </div>
     <!--/main-->
-</div>
+
 </body>
 </html>
