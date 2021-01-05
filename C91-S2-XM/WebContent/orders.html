@@ -183,7 +183,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						        <h3 class="comment-form-author"><label>时间：{{c.time}}</label>
 						     	   <br /><br />
 						        </h3>
-						      
+						        
+						      <button @click="yes(c.did)">确认收货</button>
+						       <br /><br />
 						        <span>---------------------------------------------------
 						        ----------------------------------------------</span>
 					        </form>
@@ -208,6 +210,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				this.list=res.data;
 				console.log(res.data);
 			});
+		},
+		methods:{
+			yes:function(s){
+					axios.get("OrdersServlet.action?op=update2&did="+s).then(res=>{
+					alert(res.data);
+					location.href="orders.html";
+				});
+				},
 		}
   })
   

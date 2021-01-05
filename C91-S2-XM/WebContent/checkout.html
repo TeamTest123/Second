@@ -193,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;总计:   &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;总计:{{sum}}   &nbsp; &nbsp;
 						<button @click="orders()">提交订单</button></span>
 			</div>
 				
@@ -204,6 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 el:"#gouwu",
 			 data:{
 				 list:[],
+				 totalprice:0,
 			 },
 			 created(){
 	  				axios.get("check.s").then(res=>{
@@ -247,9 +248,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  				});
 	  					
 	  				},
-		 }
+	  			
+	  					
+				 },
+					computed:{
+	  					sum(){
+	  						var all=0;
+		  					for(var p of this.list){
+		  						all+=p.price*p.number
+		  						console.info(p);
+		  					}
+		  					/* for(var i=0;i<this.pros.length;i++){
+		  						all+=this.pros[i].count*this.pros[i].price;
+		  					} */
+		  					return all;
+		  				}			
+	  				}
 	  				
-		 })
+		 });
 		 
 		 </script> 
 		 <script>$(document).ready(function(c) {

@@ -55,6 +55,12 @@ public class OrdersServlet extends BaseServlet {
 		
 	}
 	
+	public void update2(HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, SQLException {
+		String did=request.getParameter("did");
+		oDao.updateStatus("交易成功", Integer.parseInt(did));
+		
+	}
+	
 	public void QueryCount(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

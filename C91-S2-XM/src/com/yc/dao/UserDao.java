@@ -67,8 +67,8 @@ public class UserDao {
 
 				user.getUname(),
 				user.getUpwd(),
-				user.getPhone(),
 				user.getEmail(),
+				user.getPhone(),
 				user.getAddress());
 	}
 	
