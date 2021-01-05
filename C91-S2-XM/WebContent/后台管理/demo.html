@@ -60,6 +60,19 @@
 				});
 	}
 	
+	function openTab3() {
+		$('#tt').tabs(
+				'add',
+				{
+					title : "订单管理",
+					//子框架，用于在框架中打开另一个页面
+					content : "<iframe src='orders.html' style='border:0px' "
+							+ "width='100%' height='100%'> </iframe>",
+					closable : true
+				});
+	}
+	
+	
 
 
 </script>
@@ -67,10 +80,6 @@
 <body>
 
 	<div id="cc" class="easyui-layout" data-options="fit:true">
-
-		<div
-			data-options="region:'south',title:'South Title',collapsible:false"
-			style="height: 100px;"></div>
 		<div
 			data-options="region:'west',title:'West',split:true,minWidth:'200px' "
 			class="easyui-accordion" style="width: 100px;">
@@ -125,13 +134,29 @@
 
 			</div>
 			
-			<div title="订单管理">订单详情</div>
+			<div title="订单管理" data-options="iconCls:'icon-reload '"
+				style="
+				overflow: auto; 
+				padding: 10px;
+				text-align:center;
+				line-height:40px ">
+				<a id="btn" href="#" class="easyui-linkbutton"
+					data-options="
+					iconCls:'icon-search',
+					width:150,
+					onClick:openTab3 ">订单管理</a>
+			
+			
+			</div>
         	</div>
+        	
         		<div id="tt" data-options="region:'center' " class="easyui-tabs"
 			style="padding: 5px; background: #eee;"></div>
         		<div id="tt" data-options="region:'center' " class="easyui-tabs1"
 			style="padding: 5px; background: #eee;"></div>
 				<div id="tt" data-options="region:'center' " class="easyui-tabs2"
+			style="padding: 5px; background: #eee;"></div>
+				<div id="tt" data-options="region:'center' " class="easyui-tabs3"
 			style="padding: 5px; background: #eee;"></div>
 				<div id="tt" data-options="region:'center' " class="easyui-tabs4"
 			style="padding: 5px; background: #eee;"></div>

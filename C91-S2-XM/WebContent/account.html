@@ -106,7 +106,7 @@ body{
 					</div>
 					<div  class="address">
 						<span>用户名</span>
-						<input v-model="uname" type="text"  placeholder="请输入用户名" onblur="checkUser()"/>
+						<input v-model="uname" type="text"  id="uname" placeholder="请输入用户名" onblur="checkUser()"/>
 					 <td><div id="userId">用户名由英文字母和数字组成的4-16位字符，以字母开头</div></td>
 					</div>
 					
@@ -117,12 +117,12 @@ body{
 					</div>
 					<div  class="address">
 						<span>密码</span>
-						<input v-model="upwd" type="password"   placeholder="请输入密码"  onblur="checkPwd()">
+						<input v-model="upwd" id="upwd" type="password"   placeholder="请输入密码"  onblur="checkPwd()">
 						<td><div id="pwdId">密码由英文字母和数字组成的4-10位字符</div></td>
 					</div>
 					<div  class="address">
 						<span>电子邮箱</span>
-						<input v-model="email" type="text" placeholder="请输入电子邮箱" onblur="checkEmail()">
+						<input v-model="email" id="email" type="text" placeholder="请输入电子邮箱" onblur="checkEmail()">
 						 <td><div id="email_prompt"></div></td>
 					</div>
 					<div  class="address">
@@ -168,11 +168,11 @@ body{
 	  
 	  /*用户名验证*/    
 	  function checkUser(){
-	    var uname=$("uname");
+	    var uname=$("#uname").val();
 	     userId.innerHTML="";    
 	    var reg=/^[a-zA-Z][a-zA-Z0-9]{3,15}$/;    
 	      if(reg.test(uname)==false){
-	         	userId.innerHTML="**用户名不正确";
+	         	userId.innerHTML="!!用户名不正确:英文字母和数字组成的4-16位字符，以字母开头";
 	      		return false;
 	        }
 	        return true;
@@ -181,7 +181,7 @@ body{
 	  
 	  /*密码验证*/    
 	  function checkPwd(){
-	    var upwd=$("upwd");
+	    var upwd=$("upwd").val();
 	     pwdId.innerHTML="";    
 	    var reg=/^[a-zA-Z0-9]{4,10}$/;    
 	      if(reg.test(upwd)==false){
@@ -194,7 +194,7 @@ body{
 
 	  /*验证邮箱*/
 	  function checkEmail(){
-	    var email=$("email");
+	    var email=$("email").val();
 	    email_prompt.innerHTML="";
 	    var reg=/^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;    
 	      if(reg.test(email)==false){
@@ -206,13 +206,14 @@ body{
 	  
 	  /*验证手机号码*/
 	  function checkMobile(){
-	      var phone=$("#phone");
+	      var phone=$("#phone").val();
 	      mobile_prompt.innerHTML="";
 	      var regPhone=/^1\d{10}$/;
 	      if(regPhone.test(phone)==false){
 	    	  mobile_prompt.innerHTML="!!手机号码不正确，请重新输入";
 	          return false;
 	          }
+	      
 	          return true;
 	      }
 	  

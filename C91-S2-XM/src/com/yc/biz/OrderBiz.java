@@ -26,4 +26,21 @@ public class OrderBiz {
 		OrderBiz obiz=new OrderBiz();
 		obiz.create(4);
 	}
+	
+	/**
+	 * 修改订单状态
+	 */
+	public void update(String order_status,Integer did) {
+		if(order_status== null) {
+			
+		}
+		try {
+			odao.updateStatus(order_status,did);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 }

@@ -76,7 +76,9 @@ public class AdminDao {
 			User vv=new User();
 			vv.setUid(rs.getInt("uid"));
 			vv.setUname(rs.getString("uname"));
-			
+			vv.setPhone(rs.getString("phone"));
+			vv.setEmail(rs.getString("email"));
+			vv.setAddress(rs.getString("address"));
 				
 				return vv;
 		}
