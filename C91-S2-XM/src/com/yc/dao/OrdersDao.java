@@ -109,7 +109,7 @@ public class OrdersDao {
 		// 计算开始页数
 		int begin =(page-1)*10;
 		// mysql分页查询语法:limit从第几行开始，查几行数据
-		String sql = "select * from orders  limit ?,8";
+		String sql = "select * from orders ORDER BY  time DESC  limit ?,10 ";
 
 		try {
 			return DBHelper.selectList(sql, oMapper, begin);
