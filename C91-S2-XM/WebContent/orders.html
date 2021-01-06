@@ -214,7 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		methods:{
 			yes:function(s){
 					axios.get("OrdersServlet.action?op=update2&did="+s).then(res=>{
-					alert(res.data);
+					alert("交易成功！！！");
 					location.href="orders.html";
 				});
 				},
